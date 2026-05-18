@@ -13,7 +13,7 @@ export default function PanelLogin() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const res = await fetch("/api/panel/login", {
+    const res = await fetch("/api/ponpesno1oke/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -21,7 +21,7 @@ export default function PanelLogin() {
     const data = await res.json();
     setLoading(false);
     if (res.ok) {
-      router.push("/panel/dashboard");
+      router.push("/ponpesno1oke/dashboard");
     } else {
       setError(data.error || "Login gagal");
     }
