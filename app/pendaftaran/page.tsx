@@ -94,14 +94,26 @@ export default function Pendaftaran() {
 export const metadata: Metadata = {
   title: "Pendaftaran Santri Baru — Pondok Al Quran Wonosobo | Thoriqul Irsyad",
   description:
-    "Daftar Santri Baru di Pondok Pesantren Thoriqul Irsyad — Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo. Hubungi kami untuk informasi pendaftaran dan persyaratan.",
-  keywords: ["Pondok Al Quran Wonosobo", "Pondok Kitab Kuning Wonosobo", "Pendaftaran Pondok Pesantren Wonosobo"],
+    "Daftar Santri Baru di Pondok Pesantren Thoriqul Irsyad — Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo. Hubungi kami melalui WhatsApp untuk proses pendaftaran.",
+  keywords: [
+    "Pondok Al Quran Wonosobo",
+    "Pondok Kitab Kuning Wonosobo",
+    "Pendaftaran Pondok Pesantren Wonosobo",
+    "Daftar Santri Baru Wonosobo",
+  ],
   openGraph: {
     title: "Pendaftaran Santri Baru — Thoriqul Irsyad",
     description:
-      "Pendaftaran santri baru untuk Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo — mulai perjalanan tahfidz dan pengajian kitab kuning.",
+      "Pendaftaran santri baru Pondok Al Quran Wonosobo Pondok Kitab Kuning Wonosobo — resep pendidikan tahfidz dan kitab kuning.",
     url: "https://ppthoriqulirsyad.com/pendaftaran",
     images: ["/images/logo.jpeg"],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pendaftaran Santri Baru — Pondok Al Quran Wonosobo | Thoriqul Irsyad",
+    description:
+      "Mulai pendaftaran di Pondok Pesantren Thoriqul Irsyad — Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo. Lengkapi persyaratan dan hubungi kami sekarang.",
+    images: ["/images/logo.jpeg"],
   },
 };

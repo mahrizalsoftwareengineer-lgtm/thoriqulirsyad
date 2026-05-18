@@ -25,7 +25,7 @@ export default function ProfilPengasuh() {
                 <div className="relative w-56 h-64 rounded-2xl overflow-hidden border-4 border-green-200 shadow-md">
                   <Image
                     src="/images/pak kyai Hakimin dan Istri.jpeg"
-                    alt="K. Muhammad Hakimin"
+                    alt="Foto K. Muhammad Hakimin, Pengasuh Pondok Al Quran Wonosobo"
                     fill
                     className="object-cover"
                   />
@@ -96,7 +96,12 @@ export const metadata: Metadata = {
   title: "Profil Pengasuh — Pondok Al Quran Wonosobo | Thoriqul Irsyad",
   description:
     "Profil pengasuh Pondok Pesantren Thoriqul Irsyad — berpengalaman dalam pendidikan tahfidz Al-Qur'an dan pengajaran kitab kuning di Wonosobo.",
-  keywords: ["Pondok Al Quran Wonosobo", "Pondok Kitab Kuning Wonosobo", "Pengasuh Pondok Pesantren Wonosobo"],
+  keywords: [
+    "Pondok Al Quran Wonosobo",
+    "Pondok Kitab Kuning Wonosobo",
+    "Pengasuh Pondok Pesantren Wonosobo",
+    "Pengasuh Tahfidz Wonosobo",
+  ],
   openGraph: {
     title: "Profil Pengasuh — Thoriqul Irsyad",
     description:
@@ -104,5 +109,12 @@ export const metadata: Metadata = {
     url: "https://ppthoriqulirsyad.com/tentang/profil-pengasuh",
     images: ["/images/pak kyai Hakimin dan Istri.jpeg"],
     type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Profil Pengasuh — Pondok Al Quran Wonosobo | Thoriqul Irsyad",
+    description:
+      "Profil pengasuh Pondok Thoriqul Irsyad — mendidik Tahfidz Al Quran dan Kitab Kuning Wonosobo.",
+    images: ["/images/pak kyai Hakimin dan Istri.jpeg"],
   },
 };

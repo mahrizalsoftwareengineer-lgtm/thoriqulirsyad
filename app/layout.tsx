@@ -50,24 +50,75 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const orgSchema = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Pondok Pesantren Thoriqul Irsyad",
-    url: siteUrl,
-    logo: `${siteUrl}/images/logo.jpeg`,
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        contactType: "customer service",
-        telephone: "+62 812-3456-7890",
-        email: "info@ppthoriqulirsyad.com",
-        areaServed: "ID",
+  const orgSchema = JSON.stringify([
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Pondok Pesantren Thoriqul Irsyad",
+      url: siteUrl,
+      logo: `${siteUrl}/images/logo.jpeg`,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: "+62 812-3456-7890",
+          email: "info@ppthoriqulirsyad.com",
+          areaServed: "ID",
+        },
+      ],
+      keywords:
+        "Pondok Al Quran Wonosobo, Pondok Kitab Kuning Wonosobo, Pondok Pesantren Wonosobo, Tahfidz Al Quran Wonosobo, Kitab Kuning Wonosobo, Pendidikan Islam Wonosobo",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      name: "Pondok Pesantren Thoriqul Irsyad",
+      url: siteUrl,
+      logo: `${siteUrl}/images/logo.jpeg`,
+      description:
+        "Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo yang membimbing santri dalam tahfidz Al Quran dan pengajian kitab kuning.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Jogoyitnan",
+        addressLocality: "Wonosobo",
+        addressRegion: "Jawa Tengah",
+        addressCountry: "ID",
       },
-    ],
-    keywords:
-      "Pondok Al Quran Wonosobo, Pondok Kitab Kuning Wonosobo, Pondok Pesantren Wonosobo, Tahfidz Al Quran Wonosobo, Kitab Kuning Wonosobo, Pendidikan Islam Wonosobo",
-  });
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: "+62 812-3456-7890",
+          email: "info@ppthoriqulirsyad.com",
+          areaServed: "ID",
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Beranda",
+          item: "https://ppthoriqulirsyad.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Pendaftaran",
+          item: "https://ppthoriqulirsyad.com/pendaftaran",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Kontak",
+          item: "https://ppthoriqulirsyad.com/kontak",
+        },
+      ],
+    },
+  ]);
 
   return (
     <html lang="id">

@@ -8,8 +8,28 @@ import defaultKonten from "@/data/konten.json";
 export const metadata: Metadata = {
   title: "Kontak — Pondok Al Quran Wonosobo | Thoriqul Irsyad",
   description:
-    "Kontak Pondok Pesantren Thoriqul Irsyad (Pondok Al Quran Wonosobo & Pondok Kitab Kuning Wonosobo). Alamat, WhatsApp, email, Instagram, dan peta lokasi.",
-  keywords: ["Pondok Al Quran Wonosobo", "Pondok Kitab Kuning Wonosobo", "Kontak Pondok Pesantren Wonosobo"],
+    "Kontak Pondok Pesantren Thoriqul Irsyad — Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo. Temukan alamat, WhatsApp, email, dan lokasi pesantren.",
+  keywords: [
+    "Pondok Al Quran Wonosobo",
+    "Pondok Kitab Kuning Wonosobo",
+    "Kontak Pondok Pesantren Wonosobo",
+    "Alamat Pondok Pesantren Wonosobo",
+  ],
+  openGraph: {
+    title: "Kontak Pondok Al Quran Wonosobo | Thoriqul Irsyad",
+    description:
+      "Kontak Pondok Pesantren Thoriqul Irsyad — hubungi kami untuk pendaftaran santri baru dan informasi Pondok Kitab Kuning Wonosobo.",
+    url: "https://ppthoriqulirsyad.com/kontak",
+    images: ["/images/logo.jpeg"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kontak Pondok Al Quran Wonosobo | Thoriqul Irsyad",
+    description:
+      "Kontak Pondok Pesantren Thoriqul Irsyad — Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo. Hubungi kami lewat WhatsApp, email, atau kunjungi lokasi.",
+    images: ["/images/logo.jpeg"],
+  },
 };
 
 export default function KontakPage() {
