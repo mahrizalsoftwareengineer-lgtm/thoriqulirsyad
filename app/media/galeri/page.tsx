@@ -41,7 +41,7 @@ export default async function GaleriFoto() {
 
           {items.length === 0 ? (
             <div className="bg-white rounded-3xl p-12 shadow-sm text-center">
-              <p className="text-gray-500">Belum ada galeri yang tersimpan. Silakan unggah gambar melalui admin.</p>
+              <p className="text-gray-500">Belum ada galeri yang tersimpan. Silakan unggah gambar melalui panel kontrol.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

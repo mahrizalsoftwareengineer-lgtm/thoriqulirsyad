@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { supabase } from "@/lib/supabase";
 import defaultKonten from "@/data/konten.json";
 
 type Konten = {
@@ -71,13 +70,12 @@ export default function Dashboard() {
   const [videoEmbed, setVideoEmbed] = useState("");
   const [mediaLoading, setMediaLoading] = useState(true);
   const [mediaSaving, setMediaSaving] = useState(false);
-  const galleryBucket = process.env.NEXT_PUBLIC_SUPABASE_GALLERY_BUCKET ?? "gallery";
 
   useEffect(() => {
-    fetch("/api/admin/konten")
+    fetch("/api/panel/konten")
       .then((r) => {
         if (r.status === 401) {
-          router.push("/admin");
+          router.push("/panel");
           return null;
         }
         if (!r.ok) throw new Error("Gagal memuat data");
@@ -100,7 +98,7 @@ export default function Dashboard() {
           } as Konten);
         }
       })
-      .catch(() => router.push("/admin"));
+      .catch(() => router.push("/panel"));
 
     loadMedia();
   }, [router]);
@@ -108,8 +106,8 @@ export default function Dashboard() {
   async function loadMedia() {
     setMediaLoading(true);
     const [galleryRes, videosRes] = await Promise.all([
-      fetch("/api/admin/galeri"),
-      fetch("/api/admin/youtube"),
+      fetch("/api/panel/galeri"),
+      fetch("/api/panel/youtube"),
     ]);
 
     if (galleryRes.ok) {
@@ -128,7 +126,7 @@ export default function Dashboard() {
   async function handleSave() {
     if (!konten) return;
     setSaving(true);
-    await fetch("/api/admin/konten", {
+    await fetch("/api/panel/konten", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(konten),
@@ -139,8 +137,8 @@ export default function Dashboard() {
   }
 
   async function handleLogout() {
-    await fetch("/api/admin/logout", { method: "POST" });
-    router.push("/admin");
+    await fetch("/api/panel/logout", { method: "POST" });
+    router.push("/panel");
   }
 
   async function handleUploadGallery() {
@@ -154,7 +152,7 @@ export default function Dashboard() {
     formData.append("title", galleryTitle);
     formData.append("file", galleryFile);
 
-    const res = await fetch("/api/admin/galeri/upload", {
+    const res = await fetch("/api/panel/galeri/upload", {
       method: "POST",
       body: formData,
     });
@@ -175,7 +173,7 @@ export default function Dashboard() {
   async function handleDeleteGallery(id: string) {
     if (!confirm("Hapus item galeri ini?")) return;
     setMediaSaving(true);
-    await fetch(`/api/admin/galeri?id=${id}`, { method: "DELETE" });
+    await fetch(`/api/panel/galeri?id=${id}`, { method: "DELETE" });
     await loadMedia();
     setMediaSaving(false);
   }
@@ -186,7 +184,7 @@ export default function Dashboard() {
       return;
     }
     setMediaSaving(true);
-    const res = await fetch("/api/admin/youtube", {
+    const res = await fetch("/api/panel/youtube", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ embed_code: videoEmbed }),
@@ -204,7 +202,7 @@ export default function Dashboard() {
   async function handleDeleteVideo(id: string) {
     if (!confirm("Hapus video ini?")) return;
     setMediaSaving(true);
-    await fetch(`/api/admin/youtube?id=${id}`, { method: "DELETE" });
+    await fetch(`/api/panel/youtube?id=${id}`, { method: "DELETE" });
     await loadMedia();
     setMediaSaving(false);
   }
@@ -223,7 +221,7 @@ export default function Dashboard() {
         <div className="flex items-center gap-3">
           <Image src="/images/logo.jpeg" alt="Logo" width={36} height={36} className="rounded-full object-cover" />
           <div>
-            <p className="font-extrabold text-sm">Admin Panel</p>
+            <p className="font-extrabold text-sm">Panel Kontrol</p>
             <p className="text-xs text-green-200">Thoriqul Irsyad</p>
           </div>
         </div>
@@ -590,7 +588,7 @@ export default function Dashboard() {
 
           {activeTab === "Galeri" && (
             <div className="space-y-6">
-              <h2 className="font-extrabold text-gray-800 text-lg mb-4">Admin Galeri</h2>
+              <h2 className="font-extrabold text-gray-800 text-lg mb-4">Galeri</h2>
               <div className="grid gap-4">
                 <div className="bg-green-50 rounded-3xl p-6 border border-green-100">
                   <label className="label">Judul Gambar</label>
@@ -640,7 +638,7 @@ export default function Dashboard() {
 
           {activeTab === "YouTube" && (
             <div className="space-y-6">
-              <h2 className="font-extrabold text-gray-800 text-lg mb-4">Admin YouTube Embed</h2>
+              <h2 className="font-extrabold text-gray-800 text-lg mb-4">YouTube Embed</h2>
               <div className="bg-green-50 rounded-3xl p-6 border border-green-100">
                 <label className="label">Embed Code YouTube</label>
                 <textarea

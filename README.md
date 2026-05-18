@@ -33,15 +33,15 @@ Website ini dibangun menggunakan teknologi modern:
 ```
 app/
 ├── page.tsx                 # Halaman utama
-├── admin/                   # Admin dashboard
+├── panel/                   # Panel kontrol
 │   ├── page.tsx
 │   └── dashboard/
 ├── api/                     # API routes
-│   ├── admin/              # Admin API endpoints
+│   ├── panel/              # Panel API endpoints
 │   │   ├── galeri/         # Manage galeri
 │   │   ├── konten/         # Manage konten
-│   │   ├── login/          # Admin login
-│   │   ├── logout/         # Admin logout
+│   │   ├── login/          # Panel login
+│   │   ├── logout/         # Panel logout
 │   │   └── youtube/        # Manage YouTube content
 │   └── public/             # Public API endpoints
 │       ├── galeri/
@@ -141,18 +141,18 @@ npm run lint
 
 - ✅ Responsive design (mobile-first)
 - ✅ Dynamic content management (Sanity CMS)
-- ✅ Admin dashboard untuk managing content
+- ✅ Panel kontrol untuk managing content
 - ✅ Gallery management
 - ✅ YouTube integration
 - ✅ Contact & Registration forms
 - ✅ WhatsApp integration
 - ✅ SEO optimized (metadata, sitemap, robots.txt)
 
-## 🔐 Admin Dashboard
+## 🔐 Panel Kontrol
 
-Akses admin panel di `/admin` dengan login credentials yang sesuai.
+Akses panel kontrol di `/panel` dengan login credentials yang sesuai.
 
-**Fitur Admin:**
+**Fitur Panel:**
 - Manage konten halaman
 - Upload & manage galeri
 - Manage video YouTube
@@ -165,12 +165,12 @@ Akses admin panel di `/admin` dengan login credentials yang sesuai.
 - `GET /api/galeri` — Get gallery images
 - `GET /api/youtube` — Get YouTube videos
 
-### Admin Routes (Protected)
-- `POST /api/admin/login` — Admin login
-- `POST /api/admin/logout` — Admin logout
-- `POST /api/admin/konten` — Create/update content
-- `POST /api/admin/galeri/upload` — Upload gallery images
-- `POST /api/admin/youtube` — Manage YouTube videos
+### Panel Routes (Protected)
+- `POST /api/panel/login` — Panel login
+- `POST /api/panel/logout` — Panel logout
+- `POST /api/panel/konten` — Create/update content
+- `POST /api/panel/galeri/upload` — Upload gallery images
+- `POST /api/panel/youtube` — Manage YouTube videos
 
 ## 🌐 Deployment
 

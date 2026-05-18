@@ -9,7 +9,7 @@ type BiayaData = {
 
 const fasilitas = [
   "Asrama / Kamar Santri",
-  "Makan 3x Sehari",
+  "Makan 2x Sehari",
   "Kitab Pelajaran",
   "Bimbingan Tahfidz",
   "Kegiatan Spiritual Harian",

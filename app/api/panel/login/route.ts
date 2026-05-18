@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
 
   const token = signToken(username);
   const res = NextResponse.json({ success: true });
-  res.cookies.set("admin_token", token, {
+  res.cookies.set("panel_token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",

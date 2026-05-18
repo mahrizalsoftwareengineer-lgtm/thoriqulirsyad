@@ -2,17 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/lib/auth";
 import { supabase } from "@/lib/supabase";
 
-const TABLE = "gallery";
+const TABLE = "youtube_videos";
 
 export async function GET(req: NextRequest) {
-  const token = req.cookies.get("admin_token")?.value;
+  const token = req.cookies.get("panel_token")?.value;
   if (!token || !verifyToken(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const { data, error } = await supabase
     .from(TABLE)
-    .select("id,title,image_url,created_at")
+    .select("id,embed_code,created_at")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -23,19 +23,19 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const token = req.cookies.get("admin_token")?.value;
+  const token = req.cookies.get("panel_token")?.value;
   if (!token || !verifyToken(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const body = await req.json();
-  const { title, image_url } = body;
+  const { embed_code } = body;
 
-  if (!title || !image_url) {
-    return NextResponse.json({ error: "Missing title or image_url" }, { status: 400 });
+  if (!embed_code) {
+    return NextResponse.json({ error: "Missing embed_code" }, { status: 400 });
   }
 
-  const { error } = await supabase.from(TABLE).insert({ title, image_url });
+  const { error } = await supabase.from(TABLE).insert({ embed_code });
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  const token = req.cookies.get("admin_token")?.value;
+  const token = req.cookies.get("panel_token")?.value;
   if (!token || !verifyToken(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

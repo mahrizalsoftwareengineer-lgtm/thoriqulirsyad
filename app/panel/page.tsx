@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export default function AdminLogin() {
+export default function PanelLogin() {
   const router = useRouter();
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
@@ -13,7 +13,7 @@ export default function AdminLogin() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const res = await fetch("/api/admin/login", {
+    const res = await fetch("/api/panel/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -21,7 +21,7 @@ export default function AdminLogin() {
     const data = await res.json();
     setLoading(false);
     if (res.ok) {
-      router.push("/admin/dashboard");
+      router.push("/panel/dashboard");
     } else {
       setError(data.error || "Login gagal");
     }
@@ -39,7 +39,7 @@ export default function AdminLogin() {
             height={64}
             className="rounded-full object-cover mb-3"
           />
-          <h1 className="text-xl font-extrabold text-gray-800">Admin Panel</h1>
+          <h1 className="text-xl font-extrabold text-gray-800">Panel Kontrol</h1>
           <p className="text-xs text-gray-500 mt-1">Pondok Pesantren Thoriqul Irsyad</p>
         </div>
 
@@ -81,7 +81,7 @@ export default function AdminLogin() {
         </form>
 
         <p className="text-center text-xs text-gray-400 mt-6">
-          Default: admin / pondok123
+          Gunakan kredensial yang aman yang sudah dikonfigurasi melalui variabel lingkungan.
         </p>
       </div>
     </div>

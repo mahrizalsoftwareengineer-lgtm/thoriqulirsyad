@@ -6,7 +6,7 @@ import defaultKonten from "@/data/konten.json";
 const KEY = "konten_utama";
 
 export async function GET(req: NextRequest) {
-  const token = req.cookies.get("admin_token")?.value;
+  const token = req.cookies.get("panel_token")?.value;
   if (!token || !verifyToken(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const token = req.cookies.get("admin_token")?.value;
+  const token = req.cookies.get("panel_token")?.value;
   if (!token || !verifyToken(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

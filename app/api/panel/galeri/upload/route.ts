@@ -5,7 +5,7 @@ import { supabaseAdmin } from "@/lib/supabaseAdmin";
 const bucket = process.env.NEXT_PUBLIC_SUPABASE_GALLERY_BUCKET ?? "gallery";
 
 export async function POST(req: NextRequest) {
-  const token = req.cookies.get("admin_token")?.value;
+  const token = req.cookies.get("panel_token")?.value;
   if (!token || !verifyToken(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
