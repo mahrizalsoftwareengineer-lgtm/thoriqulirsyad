@@ -33,11 +33,11 @@ Website ini dibangun menggunakan teknologi modern:
 ```
 app/
 ├── page.tsx                 # Halaman utama
-├── ponpesno1oke/                   # Panel kontrol
+├── admin-ponpesno1/                   # Panel kontrol
 │   ├── page.tsx
 │   └── dashboard/
 ├── api/                     # API routes
-│   ├── ponpesno1oke/              # Panel API endpoints
+│   ├── admin-ponpesno1/              # Panel API endpoints
 │   │   ├── galeri/         # Manage galeri
 │   │   ├── konten/         # Manage konten
 │   │   ├── login/          # Panel login
@@ -150,7 +150,7 @@ npm run lint
 
 ## 🔐 Panel Kontrol
 
-Akses panel kontrol di `/ponpesno1oke` dengan login credentials yang sesuai.
+Akses panel kontrol di `/admin-ponpesno1` dengan login credentials yang sesuai.
 
 **Fitur Panel:**
 - Manage konten halaman
@@ -166,11 +166,11 @@ Akses panel kontrol di `/ponpesno1oke` dengan login credentials yang sesuai.
 - `GET /api/youtube` — Get YouTube videos
 
 ### Panel Routes (Protected)
-- `POST /api/ponpesno1oke/login` — Panel login
-- `POST /api/ponpesno1oke/logout` — Panel logout
-- `POST /api/ponpesno1oke/konten` — Create/update content
-- `POST /api/ponpesno1oke/galeri/upload` — Upload gallery images
-- `POST /api/ponpesno1oke/youtube` — Manage YouTube videos
+- `POST /api/admin-ponpesno1/login` — Panel login
+- `POST /api/admin-ponpesno1/logout` — Panel logout
+- `POST /api/admin-ponpesno1/konten` — Create/update content
+- `POST /api/admin-ponpesno1/galeri/upload` — Upload gallery images
+- `POST /api/admin-ponpesno1/youtube` — Manage YouTube videos
 
 ## 🌐 Deployment
 

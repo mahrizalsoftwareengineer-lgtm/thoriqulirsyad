@@ -72,10 +72,10 @@ export default function Dashboard() {
   const [mediaSaving, setMediaSaving] = useState(false);
 
   useEffect(() => {
-    fetch("/api/ponpesno1oke/konten")
+    fetch("/api/admin-ponpesno1/konten")
       .then((r) => {
         if (r.status === 401) {
-          router.push("/ponpesno1oke");
+          router.push("/admin-ponpesno1");
           return null;
         }
         if (!r.ok) throw new Error("Gagal memuat data");
@@ -98,7 +98,7 @@ export default function Dashboard() {
           } as Konten);
         }
       })
-      .catch(() => router.push("/ponpesno1oke"));
+      .catch(() => router.push("/admin-ponpesno1"));
 
     loadMedia();
   }, [router]);
@@ -106,8 +106,8 @@ export default function Dashboard() {
   async function loadMedia() {
     setMediaLoading(true);
     const [galleryRes, videosRes] = await Promise.all([
-      fetch("/api/ponpesno1oke/galeri"),
-      fetch("/api/ponpesno1oke/youtube"),
+      fetch("/api/admin-ponpesno1/galeri"),
+      fetch("/api/admin-ponpesno1/youtube"),
     ]);
 
     if (galleryRes.ok) {
@@ -126,7 +126,7 @@ export default function Dashboard() {
   async function handleSave() {
     if (!konten) return;
     setSaving(true);
-    await fetch("/api/ponpesno1oke/konten", {
+    await fetch("/api/admin-ponpesno1/konten", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(konten),
@@ -137,8 +137,8 @@ export default function Dashboard() {
   }
 
   async function handleLogout() {
-    await fetch("/api/ponpesno1oke/logout", { method: "POST" });
-    router.push("/ponpesno1oke");
+    await fetch("/api/admin-ponpesno1/logout", { method: "POST" });
+    router.push("/admin-ponpesno1");
   }
 
   async function handleUploadGallery() {
@@ -152,7 +152,7 @@ export default function Dashboard() {
     formData.append("title", galleryTitle);
     formData.append("file", galleryFile);
 
-    const res = await fetch("/api/ponpesno1oke/galeri/upload", {
+    const res = await fetch("/api/admin-ponpesno1/galeri/upload", {
       method: "POST",
       body: formData,
     });
@@ -173,7 +173,7 @@ export default function Dashboard() {
   async function handleDeleteGallery(id: string) {
     if (!confirm("Hapus item galeri ini?")) return;
     setMediaSaving(true);
-    await fetch(`/api/ponpesno1oke/galeri?id=${id}`, { method: "DELETE" });
+    await fetch(`/api/admin-ponpesno1/galeri?id=${id}`, { method: "DELETE" });
     await loadMedia();
     setMediaSaving(false);
   }
@@ -184,7 +184,7 @@ export default function Dashboard() {
       return;
     }
     setMediaSaving(true);
-    const res = await fetch("/api/ponpesno1oke/youtube", {
+    const res = await fetch("/api/admin-ponpesno1/youtube", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ embed_code: videoEmbed }),
@@ -202,7 +202,7 @@ export default function Dashboard() {
   async function handleDeleteVideo(id: string) {
     if (!confirm("Hapus video ini?")) return;
     setMediaSaving(true);
-    await fetch(`/api/ponpesno1oke/youtube?id=${id}`, { method: "DELETE" });
+    await fetch(`/api/admin-ponpesno1/youtube?id=${id}`, { method: "DELETE" });
     await loadMedia();
     setMediaSaving(false);
   }
