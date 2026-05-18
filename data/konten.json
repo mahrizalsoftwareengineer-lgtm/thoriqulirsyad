@@ -35,12 +35,7 @@
   },
   "hero": {
     "tagline": "Jalan Menuju Petunjuk",
-    "deskripsi": "Membentuk generasi Qur'ani yang berakhlak mulia, berilmu luas, dan siap mengabdi kepada agama, bangsa, dan masyarakat. Pondok kami merupakan Pondok Al Quran Wonosobo dan memiliki pengajaran Kitab Kuning yang kuat sebagai Pondok Kitab Kuning Wonosobo.",
-    "stats": [
-      { "value": "Tahfidz Quran", "label": "" },
-      { "value": "Menghafal Makna Al Quran", "label": "" },
-      { "value": "Kitab Kuning", "label": "" }
-    ]
+    "deskripsi": "Membentuk generasi Qur'ani yang berakhlak mulia, berilmu luas, dan siap mengabdi kepada agama, bangsa, dan masyarakat. Pondok kami merupakan Pondok Al Quran Wonosobo dan memiliki pengajaran Kitab Kuning yang kuat sebagai Pondok Kitab Kuning Wonosobo."
   },
   "program": {
     "kegiatan": [

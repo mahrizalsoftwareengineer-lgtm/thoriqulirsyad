@@ -3,7 +3,6 @@ import Image from "next/image";
 type HeroData = {
   tagline: string;
   deskripsi: string;
-  stats: { value: string; label: string }[];
 };
 
 export default function Hero({ data }: { data: HeroData }) {
@@ -38,15 +37,6 @@ export default function Hero({ data }: { data: HeroData }) {
             <a href="#profil" className="border-2 border-white text-white hover:bg-white hover:text-green-800 font-bold px-6 py-3 rounded-full text-sm transition-colors">
               Pelajari Lebih Lanjut
             </a>
-          </div>
-
-          <div className="grid grid-cols-3 gap-4 mt-10">
-            {data.stats.map((stat) => (
-              <div key={stat.value} className="text-center">
-                <p className="text-2xl font-extrabold text-yellow-300">{stat.value}</p>
-                <p className="text-xs text-green-200 mt-1">{stat.label}</p>
-              </div>
-            ))}
           </div>
         </div>
 
