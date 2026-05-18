@@ -59,7 +59,7 @@ export default function Kontak({ data }: { data: KontakData }) {
 
           <div className="bg-white rounded-2xl overflow-hidden shadow-md">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63246.41!2d109.9!3d-7.36!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a9b!2sWonosobo!5e0!3m2!1sid!2sid!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.816261300921!2d109.91133417476154!3d-7.374479992634913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa117e4477a4b%3A0xab406cce37b22c42!2sPondok%20Pesantren%20Thoriqul%20Irsyad!5e0!3m2!1sid!2sid!4v1779091221865!5m2!1sid!2sid"
               width="100%"
               height="100%"
               style={{ minHeight: "350px", border: 0 }}
