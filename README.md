@@ -1,205 +1,118 @@
-# Pondok Pesantren Thoriqul Irsyad
+# 🕌 Pondok Pesantren Thoriqul Irsyad
 
-Website resmi **Pondok Pesantren Thoriqul Irsyad** — lembaga pendidikan Islam yang berlokasi di Wonosobo, Jawa Tengah. Diasuh oleh **K. Muhammad Hakimin, IH. Alh.** dengan pengalaman mengajar lebih dari 25 tahun.
+Website resmi **Pondok Pesantren Thoriqul Irsyad** — lembaga pendidikan Islam yang berlokasi di Wonosobo, Jawa Tengah, Indonesia.
 
-## Tentang Pondok
+---
 
-Thoriqul Irsyad (Jalan Menuju Petunjuk) adalah pondok pesantren yang berdedikasi membentuk generasi Qur'ani yang berakhlak mulia, berilmu luas, dan siap mengabdi kepada agama, bangsa, dan masyarakat.
+## 📖 Tentang Pesantren
 
-### Program Unggulan
-- **Tahfidz Al-Qur'an** (30 Juz)
-- **Kajian Kitab Kuning** (Nahwu, Shorof, Fiqih, dll)
-- **Pendidikan Diniyah Harian**
+**Thoriqul Irsyad** (Jalan Menuju Petunjuk) adalah pondok pesantren yang berdedikasi membentuk generasi Qur'ani yang berakhlak mulia, berilmu luas, dan siap mengabdi kepada agama, bangsa, dan masyarakat.
 
-### Kegiatan Santri
-- **Harian**: Diniyah, Kajian Kitab Kuning, Mujahadah, Lalaran
-- **Mingguan**: Ziarah, Muhadlarah, Diba'iyah, Selapanan, Roan
-- **Tahunan**: Ziarah Auliya', Haflah at-Tasyakur wal Imtihan
+Pesantren ini diasuh oleh **K. Muhammad Hakimin, IH. Alh.** — seorang tokoh pendidik dengan pengalaman mengajar lebih dari 25 tahun di lingkungan Yayasan Al-Asy'ariyyah Wonosobo.
 
-## 🛠️ Teknologi
+### Visi
+Mewujudkan santri yang unggul dalam mutu dan berakhlak Qur'ani.
 
-Website ini dibangun menggunakan teknologi modern:
+### Misi
+Mendidik santri menjadi penghafal Al-Qur'an, ahli ilmu agama, dan bermanfaat bagi umat.
 
-- **Next.js 16.2.6** — React framework untuk production
-- **TypeScript** — Type-safe development
-- **Tailwind CSS 4** — Utility-first CSS framework
-- **Supabase** — Backend & Database
-- **Sanity** — Headless CMS untuk content management
-- **JWT & bcryptjs** — Authentication & Security
-- **Lucide React** — Icon library
+---
 
-## 📁 Struktur Proyek
+## 🌐 Fitur Website
 
-```
-app/
-├── page.tsx                 # Halaman utama
-├── admin-ponpesno1/                   # Panel kontrol
-│   ├── page.tsx
-│   └── dashboard/
-├── api/                     # API routes
-│   ├── admin-ponpesno1/              # Panel API endpoints
-│   │   ├── galeri/         # Manage galeri
-│   │   ├── konten/         # Manage konten
-│   │   ├── login/          # Panel login
-│   │   ├── logout/         # Panel logout
-│   │   └── youtube/        # Manage YouTube content
-│   └── public/             # Public API endpoints
-│       ├── galeri/
-│       ├── konten/
-│       └── youtube/
-├── kontak/                  # Contact page
-├── media/                   # Media pages
-│   ├── galeri/             # Gallery
-│   └── video/              # Videos
-├── pendaftaran/            # Registration page
-├── pendidikan/             # Education pages
-│   ├── kurikulum/          # Curriculum
-│   └── program/            # Programs
-└── tentang/                # About pages
-    ├── profil-pengasuh/    # Founder profile
-    └── profil-pesantren/   # Institution profile
+| Halaman | Deskripsi |
+|---|---|
+| **Beranda** | Hero banner, statistik, keunggulan pondok |
+| **Profil Pesantren** | Visi, misi, nilai, dan sejarah pondok |
+| **Profil Pengasuh** | Biografi lengkap K. Muhammad Hakimin |
+| **Kurikulum** | Tahfidz, Kitab Kuning, Pendidikan Formal |
+| **Program & Kegiatan** | Kegiatan harian, mingguan, tahunan, spiritual |
+| **Galeri Foto** | Dokumentasi kegiatan santri |
+| **Pendaftaran** | Persyaratan & cara daftar via WhatsApp |
+| **Kontak** | Alamat, nomor WA, email, peta lokasi |
+| **Admin Panel** | Dashboard edit konten tanpa coding |
 
-components/                 # Reusable React components
-├── Navbar.tsx
-├── Hero.tsx
-├── WhyUs.tsx
-├── Pengasuh.tsx
-├── Program.tsx
-├── Biaya.tsx
-├── Galeri.tsx
-├── Testimoni.tsx
-├── CTA.tsx
-├── Kontak.tsx
-├── Footer.tsx
-└── WhatsAppButton.tsx
+---
 
-lib/                        # Utilities & helpers
-├── auth.ts                # Authentication logic
-├── supabase.ts            # Supabase client
-├── supabaseAdmin.ts       # Supabase admin
-└── useKonten.ts           # Content hook
+## ⚙️ Teknologi
 
-public/                    # Static assets
-└── images/
-```
+- **[Next.js 15](https://nextjs.org)** — React framework dengan App Router
+- **[Tailwind CSS](https://tailwindcss.com)** — Utility-first CSS framework
+- **[TypeScript](https://www.typescriptlang.org)** — Type safety
+- **[Supabase](https://supabase.com)** — Database & storage (PostgreSQL)
+- **[Lucide React](https://lucide.dev)** — Icon library
+- **[Vercel](https://vercel.com)** — Hosting & deployment
 
-## 🚀 Memulai Pengembangan
+---
 
-### Prasyarat
-- Node.js 18+ 
-- npm atau yarn
+## 🚀 Menjalankan Secara Lokal
 
-### Instalasi
-
+### 1. Clone repository
 ```bash
-# Clone repository
-git clone <repository-url>
-cd "Thoriqul Irsyad/website"
+git clone https://github.com/mahrizalsoftwareengineer-lgtm/thoriqulirsyad.git
+cd thoriqulirsyad
+```
 
-# Install dependencies
+### 2. Install dependencies
+```bash
 npm install
-
-# Setup environment variables
-# Buat file .env.local dan sesuaikan dengan konfigurasi Anda
-cp .env.local.example .env.local
 ```
 
-### Environment Variables
-
-Konfigurasi file `.env.local`:
-
-```
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
-NEXT_PUBLIC_SANITY_DATASET=your_sanity_dataset
+### 3. Setup environment variables
+Buat file `.env.local` di root project:
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+ADMIN_SECRET=your-secret-key
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=your-password
 ```
 
-### Development Server
-
+### 4. Jalankan development server
 ```bash
 npm run dev
 ```
 
 Buka [http://localhost:3000](http://localhost:3000) di browser.
 
-## 📦 Build & Production
+---
 
-```bash
-# Build untuk production
-npm run build
+## 🔐 Admin Panel
 
-# Run production server
-npm start
+Akses admin panel di `/admin` untuk mengelola konten website:
 
-# Lint code
-npm run lint
+- **Hero** — tagline, deskripsi, statistik
+- **Profil Pengasuh** — nama, riwayat pendidikan, pengabdian
+- **Biaya** — rincian biaya bulanan & awal masuk
+- **Program** — kegiatan harian/mingguan/tahunan & spiritual
+- **Kontak** — alamat, nomor WA, email
+
+---
+
+## 🗄️ Setup Database (Supabase)
+
+Jalankan SQL berikut di Supabase SQL Editor:
+
+```sql
+CREATE TABLE IF NOT EXISTS konten (
+  key TEXT PRIMARY KEY,
+  value JSONB NOT NULL,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 ```
 
-## 📝 Fitur Utama
+---
 
-- ✅ Responsive design (mobile-first)
-- ✅ Dynamic content management (Sanity CMS)
-- ✅ Panel kontrol untuk managing content
-- ✅ Gallery management
-- ✅ YouTube integration
-- ✅ Contact & Registration forms
-- ✅ WhatsApp integration
-- ✅ SEO optimized (metadata, sitemap, robots.txt)
+## 📞 Kontak Pesantren
 
-## 🔐 Panel Kontrol
+- 📍 Wonosobo, Jawa Tengah, Indonesia
+- 📱 WhatsApp: +62 812-3456-7890
+- 📧 info@thoriqulirsyad.ac.id
 
-Akses panel kontrol di `/admin-ponpesno1` dengan login credentials yang sesuai.
-
-**Fitur Panel:**
-- Manage konten halaman
-- Upload & manage galeri
-- Manage video YouTube
-- View analytics & statistics
-
-## 📱 API Endpoints
-
-### Public Routes
-- `GET /api/konten` — Get all content
-- `GET /api/galeri` — Get gallery images
-- `GET /api/youtube` — Get YouTube videos
-
-### Panel Routes (Protected)
-- `POST /api/admin-ponpesno1/login` — Panel login
-- `POST /api/admin-ponpesno1/logout` — Panel logout
-- `POST /api/admin-ponpesno1/konten` — Create/update content
-- `POST /api/admin-ponpesno1/galeri/upload` — Upload gallery images
-- `POST /api/admin-ponpesno1/youtube` — Manage YouTube videos
-
-## 🌐 Deployment
-
-Website ini di-host di [Vercel](https://vercel.com). 
-
-```bash
-# Deploy ke Vercel
-vercel deploy --prod
-```
-
-## 🤝 Kontribusi
-
-Untuk berkontribusi:
-
-1. Fork repository
-2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
-
-## 📞 Kontak & Support
-
-- 📍 **Lokasi**: Wonosobo, Jawa Tengah, Indonesia
-- 📱 **WhatsApp**: +62 812-3456-7890
-- 📧 **Email**: contact@thoriqulirstyad.ac.id
-- 🌐 **Website**: https://thoriqulirstyad.ac.id
+---
 
 ## 📄 Lisensi
 
 © 2025 Pondok Pesantren Thoriqul Irsyad. Hak Cipta Dilindungi.
 
-Semua konten dan kode dalam repository ini dilindungi oleh hak cipta. Untuk penggunaan komersial atau reproduksi, hubungi pihak pondok pesantren.
+Dibuat dengan ❤️ untuk kemajuan pendidikan Islam.
