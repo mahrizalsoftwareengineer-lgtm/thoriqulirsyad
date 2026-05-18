@@ -619,7 +619,7 @@ export default function Dashboard() {
                     galleryItems.map((item) => (
                       <div key={item.id} className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
                         <div className="relative h-64">
-                          <Image src={item.image_url} alt={item.title} fill className="object-cover" />
+                          <Image src={item.image_url} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                         </div>
                         <div className="p-4">
                           <p className="font-semibold text-gray-800">{item.title}</p>

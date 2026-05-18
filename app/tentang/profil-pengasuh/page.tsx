@@ -27,6 +27,7 @@ export default function ProfilPengasuh() {
                     src="/images/pak kyai Hakimin dan Istri.jpeg"
                     alt="Foto K. Muhammad Hakimin, Pengasuh Pondok Al Quran Wonosobo"
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover"
                   />
                 </div>

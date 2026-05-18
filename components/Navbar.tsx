@@ -45,7 +45,7 @@ function DropdownItem({ item }: { item: typeof navItems[0] }) {
 
   if (!item.children) {
     return (
-      <Link href={item.href!} className="text-sm font-medium text-gray-700 hover:text-green-700 transition-colors px-1">
+      <Link href={item.href!} className="text-base font-medium text-gray-700 hover:text-green-700 transition-colors px-1">
         {item.label}
       </Link>
     );
@@ -55,7 +55,7 @@ function DropdownItem({ item }: { item: typeof navItems[0] }) {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 text-sm font-medium px-3 py-1.5 rounded-full transition-colors ${
+        className={`flex items-center gap-1 text-base font-medium px-3 py-1.5 rounded-full transition-colors ${
           open ? "bg-green-100 text-green-800" : "text-gray-700 hover:text-green-700"
         }`}
       >
@@ -70,7 +70,7 @@ function DropdownItem({ item }: { item: typeof navItems[0] }) {
               key={child.href}
               href={child.href}
               onClick={() => setOpen(false)}
-              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 first:rounded-t-2xl last:rounded-b-2xl transition-colors"
+              className="block px-4 py-2.5 text-base text-gray-700 hover:bg-green-50 hover:text-green-700 first:rounded-t-2xl last:rounded-b-2xl transition-colors"
             >
               {child.label}
             </Link>
@@ -98,8 +98,8 @@ export default function Navbar() {
             className="rounded-full object-cover"
           />
           <div className="leading-tight">
-            <p className="text-xs text-gray-500 font-medium">Pondok Pesantren</p>
-            <p className="text-sm font-bold text-green-700">Thoriqul Irsyad</p>
+            <p className="text-sm text-gray-500 font-medium">Pondok Pesantren</p>
+            <p className="text-base font-bold text-green-700">Thoriqul Irsyad</p>
           </div>
         </Link>
 
@@ -113,7 +113,7 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="/pendaftaran"
-          className="hidden md:inline-block bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold text-sm px-5 py-2 rounded-full transition-colors"
+          className="hidden md:inline-block bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold text-base px-5 py-2 rounded-full transition-colors"
         >
           Daftar Sekarang
         </Link>
@@ -143,7 +143,7 @@ export default function Navbar() {
                       <ul className="pl-4 space-y-1 mb-2">
                         {item.children.map((child) => (
                           <li key={child.href}>
-                            <Link href={child.href} className="block text-sm text-gray-600 hover:text-green-700 py-1.5" onClick={() => setMobileOpen(false)}>
+                            <Link href={child.href} className="block text-base text-gray-600 hover:text-green-700 py-1.5" onClick={() => setMobileOpen(false)}>
                               {child.label}
                             </Link>
                           </li>
@@ -152,14 +152,14 @@ export default function Navbar() {
                     )}
                   </div>
                 ) : (
-                  <Link href={item.href!} className="block text-sm font-medium text-gray-700 py-2" onClick={() => setMobileOpen(false)}>
+                  <Link href={item.href!} className="block text-base font-medium text-gray-700 py-2" onClick={() => setMobileOpen(false)}>
                     {item.label}
                   </Link>
                 )}
               </li>
             ))}
             <li className="mt-2">
-              <Link href="/pendaftaran" className="inline-block bg-yellow-400 text-green-900 font-bold text-sm px-5 py-2 rounded-full" onClick={() => setMobileOpen(false)}>
+              <Link href="/pendaftaran" className="inline-block bg-yellow-400 text-green-900 font-bold text-base px-5 py-2 rounded-full" onClick={() => setMobileOpen(false)}>
                 Daftar Sekarang
               </Link>
             </li>

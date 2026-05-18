@@ -6,6 +6,7 @@ import Pengasuh from "@/components/Pengasuh";
 import Program from "@/components/Program";
 import Biaya from "@/components/Biaya";
 import Galeri from "@/components/Galeri";
+import Youtube from "@/components/Youtube";
 import CTA from "@/components/CTA";
 import Kontak from "@/components/Kontak";
 import Footer from "@/components/Footer";
@@ -24,6 +25,7 @@ export default function Home() {
       <Program data={konten.program} />
       <Biaya data={konten.biaya} />
       <Galeri />
+      <Youtube />
       <CTA kontak={konten.kontak} />
       <Kontak data={konten.kontak} />
       <Footer kontak={konten.kontak} />

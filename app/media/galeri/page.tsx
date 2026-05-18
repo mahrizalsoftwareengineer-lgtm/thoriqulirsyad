@@ -47,7 +47,7 @@ export default async function GaleriFoto() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {items.map((item) => (
                 <div key={item.id} className="relative group overflow-hidden rounded-2xl shadow-md aspect-square">
-                  <Image src={item.image_url} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <Image src={item.image_url} alt={item.title} fill sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-green-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <p className="text-white text-sm font-semibold">{item.title}</p>
                   </div>

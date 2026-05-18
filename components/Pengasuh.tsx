@@ -28,6 +28,7 @@ export default function Pengasuh({ data }: { data: ProfilData }) {
                 src="/images/pak kyai Hakimin dan Istri.jpeg"
                 alt={`${data.nama} — Pengasuh Pondok Thoriqul Irsyad (Pondok Al Quran Wonosobo)`}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-green-900/60 to-transparent" />

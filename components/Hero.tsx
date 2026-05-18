@@ -42,10 +42,10 @@ export default function Hero({ data }: { data: HeroData }) {
 
         <div className="relative z-10 hidden md:flex flex-col gap-4 items-center">
           <div className="relative w-72 h-52 -rotate-2 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-            <Image src="/images/galeri 1 di dero.jpeg" alt="Kegiatan Santri Tahfidz Pondok Al Quran Wonosobo" fill className="object-cover" priority />
+            <Image src="/images/galeri 1 di dero.jpeg" alt="Kegiatan Santri Tahfidz Pondok Al Quran Wonosobo" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" priority />
           </div>
           <div className="relative w-72 h-52 rotate-2 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 -mt-6 ml-8">
-            <Image src="/images/galeri 2 pak jumeno.jpeg" alt="Kegiatan Santri Pondok Al Quran Wonosobo" fill className="object-cover" />
+            <Image src="/images/galeri 2 pak jumeno.jpeg" alt="Kegiatan Santri Pondok Al Quran Wonosobo" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
           </div>
         </div>
       </div>

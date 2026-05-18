@@ -40,7 +40,7 @@ export default function CTA({ kontak }: { kontak: KontakData }) {
 
             <div className="flex justify-center">
               <div className="relative w-64 h-64 rounded-2xl overflow-hidden shadow-2xl">
-                <Image src="/images/brosur B.jpg.jpeg" alt="Brosur Pendaftaran Pondok Al Quran Wonosobo" fill className="object-cover" />
+                <Image src="/images/brosur B.jpg.jpeg" alt="Brosur Pendaftaran Pondok Al Quran Wonosobo" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
               </div>
             </div>
           </div>
