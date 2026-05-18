@@ -1,6 +1,9 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const galeriItems = [
+const defaultItems = [
   { src: "/images/galeri 1 di dero.jpeg", alt: "Kegiatan Santri di Dero", caption: "Kegiatan Santri" },
   { src: "/images/galeri 2 pak jumeno.jpeg", alt: "Kegiatan Bersama", caption: "Kegiatan Bersama" },
   { src: "/images/pak kyai Hakimin dan Istri.jpeg", alt: "Pak Kyai dan Istri", caption: "Pengasuh & Keluarga" },
@@ -9,7 +12,34 @@ const galeriItems = [
   { src: "/images/abah yai hakimin.jpg", alt: "Abah Yai Hakimin", caption: "Abah Yai Hakimin" },
 ];
 
+type GalleriItem = {
+  id: string;
+  title: string;
+  image_url: string;
+};
+
 export default function Galeri() {
+  const [galeriItems, setGaleriItems] = useState<GalleriItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/galeri")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setGaleriItems(data);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
+
+  const itemsToRender = galeriItems.length > 0 ? galeriItems.map((item) => ({
+    src: item.image_url,
+    alt: item.title,
+    caption: item.title,
+  })) : defaultItems;
+
   return (
     <section id="galeri" className="py-16 bg-green-50">
       <div className="max-w-6xl mx-auto px-4">
@@ -21,13 +51,12 @@ export default function Galeri() {
             Kenangan Pesantren
           </h2>
           <p className="text-gray-500 mt-2 text-sm max-w-xl mx-auto">
-            Sekilas momen berharga kehidupan santri dan kegiatan di Pondok
-            Pesantren Thoriqul Irsyad.
+            Sekilas momen berharga kehidupan santri dan kegiatan di Pondok Pesantren Thoriqul Irsyad.
           </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {galeriItems.map((item, idx) => (
+          {(loading ? defaultItems : itemsToRender).map((item, idx) => (
             <div
               key={idx}
               className="relative group overflow-hidden rounded-2xl shadow-md aspect-square"
@@ -47,7 +76,7 @@ export default function Galeri() {
 
         <div className="text-center mt-8">
           <a
-            href="#"
+            href="/media/galeri"
             className="inline-block border-2 border-green-700 text-green-700 hover:bg-green-700 hover:text-white font-bold px-8 py-3 rounded-full text-sm transition-colors"
           >
             Lihat Lebih Detail

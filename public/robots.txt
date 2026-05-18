@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ppthoriqulirsyad.com/sitemap.xml
+Host: ppthoriqulirsyad.com

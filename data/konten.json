@@ -1,0 +1,89 @@
+{
+  "profil": {
+    "nama": "K. Muhammad Hakimin, IH. Alh.",
+    "gelar": "Abah Yai",
+    "deskripsi": "Beliau adalah tokoh pendidik dan pengasuh yang mendedikasikan hidupnya dalam dunia dakwah dan pendidikan Islam di wilayah Wonosobo. Dikenal memiliki latar belakang keilmuan pesantren yang kuat (sanad Kaliwungu) serta pengalaman formal yang panjang.",
+    "pengabdian": "Guru SMP Takhassus Al-Qur'an Kalibeber",
+    "tahunPengabdian": "25 Tahun (1991–2016)",
+    "riwayat": [
+      "Ponpes APIK Kaliwungu, Kendal",
+      "Ponpes Al-Fadllu Wal Fadhilah Kaliwungu",
+      "IIQ Jawa Tengah (UNSIQ) Wonosobo"
+    ]
+  },
+  "biaya": {
+    "bulanan": [
+      { "label": "Biaya Pondok & Makan", "amount": "Rp 450.000" },
+      { "label": "Kamar & Diniyah", "amount": "Rp 100.000" },
+      { "label": "Tabungan Khataman & Ziarah", "amount": "Rp 50.000" }
+    ],
+    "totalBulanan": "Rp 600.000",
+    "awalMasuk": [
+      { "label": "Kitab Ma'ani (3 Jilid) + Nahwu (2 Jilid)", "amount": "Rp 100.000" },
+      { "label": "Infaq Santri Baru", "amount": "Rp 500.000" }
+    ],
+    "totalAwal": "Rp 600.000"
+  },
+  "kontak": {
+    "alamat": "Jogoyitnan Wonosobo, Jawa Tengah, Indonesia",
+    "contactPerson": "0812-3917-4604 (WhatsApp)",
+    "whatsapp": "6281234567890",
+    "whatsappDisplay": "+62 812-3456-7890",
+    "email": "info@ppthoriqulirsyad.com",
+    "instagram": "@smp_mts_thoriqulirsyad",
+    "jamOperasional": "Senin – Sabtu, 08.00 – 16.00 WIB"
+  },
+  "hero": {
+    "tagline": "Jalan Menuju Petunjuk",
+    "deskripsi": "Membentuk generasi Qur'ani yang berakhlak mulia, berilmu luas, dan siap mengabdi kepada agama, bangsa, dan masyarakat. Pondok kami merupakan Pondok Al Quran Wonosobo dan memiliki pengajaran Kitab Kuning yang kuat sebagai Pondok Kitab Kuning Wonosobo.",
+    "stats": [
+      { "value": "25+", "label": "Tahun Pengalaman" },
+      { "value": "500+", "label": "Alumni" },
+      { "value": "3", "label": "Program Unggulan" }
+    ]
+  },
+  "program": {
+    "kegiatan": [
+      {
+        "title": "Kegiatan Harian",
+        "items": ["Diniyah", "Kajian Kitab Kuning", "Mujahadah", "Lalaran"]
+      },
+      {
+        "title": "Kegiatan Mingguan",
+        "items": ["Ziarah", "Muhadlarah", "Diba'iyah", "Selapanan", "Roan"]
+      },
+      {
+        "title": "Kegiatan Tahunan",
+        "items": ["Ziarah Auliya'", "Haflah at-Tasyakur wal Imtihan"]
+      }
+    ],
+    "spiritual": [
+      "Tahfidz Qur'an",
+      "Menghafal ma'na Al-Quran 30 juz",
+      "Nahwu Sorof",
+      "BTQ",
+      "Mujahadah Wali Murid",
+      "Ziarah/Wisata Religi"
+    ]
+  },
+  "kurikulum": [
+    {
+      "icon": "BookOpen",
+      "title": "Tahfidz Al-Qur'an",
+      "desc": "Program menghafal Al-Qur'an 30 juz dengan metode yang terstruktur dan bimbingan intensif dari ustadz berpengalaman.",
+      "badge": "Unggulan"
+    },
+    {
+      "icon": "Star",
+      "title": "Kitab Kuning",
+      "desc": "Pembelajaran kitab kuning klasik meliputi Nahwu, Shorof, Fiqih, Tauhid, Akhlak, dan berbagai ilmu agama lainnya.",
+      "badge": "Tradisional"
+    },
+    {
+      "icon": "Layers",
+      "title": "Pendidikan Formal",
+      "desc": "Integrasi pendidikan formal (MTs) dengan kurikulum pesantren untuk mempersiapkan santri menghadapi tantangan zaman.",
+      "badge": "Terpadu"
+    }
+  ]
+}
