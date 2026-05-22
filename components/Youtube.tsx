@@ -16,7 +16,7 @@ export default function Youtube() {
 
         <div className="flex justify-center">
           <div className="w-full max-w-3xl rounded-2xl overflow-hidden shadow-xl">
-            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <div className="relative w-full aspect-video">
               <iframe
                 className="absolute inset-0 w-full h-full"
                 src="https://www.youtube.com/embed/RkJxRs-XVCM?si=3zOZhmHFGU6tWE8s"

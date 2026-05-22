@@ -21,7 +21,7 @@ export default function Hero({ data }: { data: HeroData }) {
             Pondok Pesantren
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-2">
-            Thoriqul Irsyad
+            Pondok Al Quran Wonosobo<br/>Thoriqul Irsyad
           </h1>
           <p className="text-yellow-300 text-xl font-semibold mb-4">
             {data.tagline}

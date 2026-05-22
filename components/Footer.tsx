@@ -55,20 +55,22 @@ export default function Footer({ kontak }: { kontak: KontakData }) {
 
           <div>
             <h3 className="font-bold text-sm uppercase tracking-wider mb-4 text-green-300">Kontak</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-green-200">{kontak.alamat}</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={16} className="text-green-400 flex-shrink-0" />
-                <span className="text-sm text-green-200">{kontak.whatsappDisplay}</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={16} className="text-green-400 flex-shrink-0" />
-                <span className="text-sm text-green-200">{kontak.email}</span>
-              </li>
-            </ul>
+            <address className="not-italic">
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <MapPin size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-green-200">{kontak.alamat}</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Phone size={16} className="text-green-400 flex-shrink-0" />
+                  <span className="text-sm text-green-200">{kontak.whatsappDisplay}</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail size={16} className="text-green-400 flex-shrink-0" />
+                  <span className="text-sm text-green-200">{kontak.email}</span>
+                </li>
+              </ul>
+            </address>
           </div>
         </div>
 

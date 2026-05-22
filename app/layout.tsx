@@ -120,6 +120,22 @@ export default function RootLayout({
         },
       ],
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "Pondok Pesantren Thoriqul Irsyad",
+      image: `${siteUrl}/images/logo.jpeg`,
+      "@id": `${siteUrl}`,
+      url: siteUrl,
+      telephone: "+62 812-3456-7890",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Jogoyitnan",
+        addressLocality: "Wonosobo",
+        addressRegion: "Jawa Tengah",
+        addressCountry: "ID",
+      },
+    },
   ]);
 
   return (
