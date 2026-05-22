@@ -119,7 +119,7 @@ export default function Navbar() {
         </Link>
 
         {/* Mobile toggle */}
-        <button className="md:hidden text-green-700" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button aria-label="Menu" className="md:hidden text-green-700" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>

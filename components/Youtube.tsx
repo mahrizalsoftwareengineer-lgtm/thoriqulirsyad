@@ -3,7 +3,7 @@ export default function Youtube() {
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
-          <span className="inline-block bg-red-100 text-red-600 text-xs font-bold px-3 py-1 rounded-full mb-3">
+          <span className="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
             Video
           </span>
           <h2 className="text-3xl font-extrabold text-gray-800">

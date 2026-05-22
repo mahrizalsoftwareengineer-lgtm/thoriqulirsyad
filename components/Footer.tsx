@@ -41,7 +41,7 @@ export default function Footer({ kontak }: { kontak: KontakData }) {
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-green-300">Tautan Cepat</h4>
+            <h3 className="font-bold text-sm uppercase tracking-wider mb-4 text-green-300">Tautan Cepat</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -54,7 +54,7 @@ export default function Footer({ kontak }: { kontak: KontakData }) {
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-green-300">Kontak</h4>
+            <h3 className="font-bold text-sm uppercase tracking-wider mb-4 text-green-300">Kontak</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
