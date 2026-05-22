@@ -4,25 +4,24 @@ import "./globals.css";
 const siteUrl = "https://ppthoriqulirsyad.com";
 
 export const metadata: Metadata = {
-  title: "Pondok Al Quran Wonosobo — Pondok Kitab Kuning Wonosobo | Thoriqul Irsyad",
+  title: "Pondok Al Quran & Kitab Kuning Wonosobo | Thoriqul Irsyad",
   description:
-    "Pondok Al Quran Wonosobo Pondok Kitab Kuning Wonosobo — Pondok Pesantren Thoriqul Irsyad membentuk generasi Qur'ani yang berakhlak mulia, berilmu luas, dan siap mengabdi di Wonosobo.",
+    "Mencari pondok quran wonosobo atau pondok kitab wonosobo? Ponpes Thoriqul Irsyad adalah pilihan tepat pondok alquran untuk tahfidz dan kajian kitab kuning.",
   keywords: [
     "Pondok Al Quran Wonosobo",
     "Pondok Kitab Kuning Wonosobo",
+    "Pondok Quran Wonosobo",
+    "Pondok Alquran Wonosobo",
+    "Pondok Kitab Wonosobo",
     "Pondok Pesantren Wonosobo",
     "Tahfidz Al Quran Wonosobo",
-    "Kitab Kuning Wonosobo",
-    "Pondok Tahfidz Wonosobo",
-    "Pondok Pesantren Tahfidz",
-    "Pesantren Kitab Kuning",
     "Pendidikan Islam Wonosobo",
   ],
   authors: [{ name: "Pondok Pesantren Thoriqul Irsyad" }],
   openGraph: {
-    title: "Pondok Al Quran Wonosobo — Pondok Kitab Kuning Wonosobo | Thoriqul Irsyad",
+    title: "Pondok Al Quran & Kitab Wonosobo | Thoriqul Irsyad",
     description:
-      "Pondok Al Quran Wonosobo Pondok Kitab Kuning Wonosobo — Pondok Pesantren Thoriqul Irsyad menyediakan pendidikan tahfidz dan kitab kuning berkualitas di Wonosobo.",
+      "Mencari pondok quran wonosobo atau pondok kitab wonosobo? Ponpes Thoriqul Irsyad adalah pilihan tepat pondok alquran untuk tahfidz dan kajian kitab kuning.",
     url: siteUrl,
     siteName: "Pondok Pesantren Thoriqul Irsyad",
     images: ["/images/logo.jpeg"],
@@ -31,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pondok Al Quran Wonosobo — Pondok Kitab Kuning Wonosobo | Thoriqul Irsyad",
+    title: "Pondok Al Quran & Kitab Wonosobo | Thoriqul Irsyad",
     description:
-      "Pondok Al Quran Wonosobo Pondok Kitab Kuning Wonosobo — Pondok Pesantren Thoriqul Irsyad menyediakan pendidikan tahfidz dan kitab kuning berkualitas di Wonosobo.",
+      "Mencari pondok quran wonosobo atau pondok kitab wonosobo? Ponpes Thoriqul Irsyad adalah pilihan tepat pondok alquran untuk tahfidz dan kajian kitab kuning.",
     images: ["/images/logo.jpeg"],
   },
   robots: {
@@ -76,7 +75,7 @@ export default function RootLayout({
       url: siteUrl,
       logo: `${siteUrl}/images/logo.jpeg`,
       description:
-        "Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo yang membimbing santri dalam tahfidz Al Quran dan pengajian kitab kuning.",
+        "Thoriqul Irsyad adalah pondok alquran wonosobo dan pondok kitab wonosobo yang unggul dalam tahfidz dan pengajian kitab kuning.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Jogoyitnan",

@@ -35,8 +35,7 @@ export default function WhyUs() {
             Mengapa Memilih Kami?
           </h2>
           <p className="text-gray-500 mt-2 max-w-xl mx-auto text-sm">
-            Kami hadir untuk mencetak generasi penerus yang tidak hanya cerdas
-            secara intelektual, tetapi juga kuat secara spiritual.
+            Sebagai salah satu pondok alquran wonosobo dan pondok kitab wonosobo terbaik, kami hadir untuk mencetak generasi penerus yang tidak hanya cerdas secara intelektual, tetapi juga kuat secara spiritual.
           </p>
         </div>
 
