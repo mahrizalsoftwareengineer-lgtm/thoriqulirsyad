@@ -33,9 +33,18 @@ export const metadata: Metadata = {
 };
 
 import Kontak from "@/components/Kontak";
+import { supabase } from "@/lib/supabase";
 
-export default function KontakPage() {
-  const { kontak } = defaultKonten;
+async function getKontakData() {
+  const { data } = await supabase.from("konten").select("value").eq("key", "konten_utama").single();
+  if (data?.value?.kontak) {
+    return data.value.kontak;
+  }
+  return defaultKonten.kontak;
+}
+
+export default async function KontakPage() {
+  const kontak = await getKontakData();
 
   return (
     <>
