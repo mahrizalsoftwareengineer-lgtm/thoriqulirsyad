@@ -55,7 +55,16 @@ type VideoItem = {
   embed_code: string;
 };
 
-const tabs = ["Hero", "Profil Pengasuh", "Biaya", "Kurikulum", "Program", "Kontak", "Galeri", "YouTube"];
+type MessageItem = {
+  id: string;
+  nama: string;
+  email: string | null;
+  telepon: string | null;
+  pesan: string;
+  created_at: string;
+};
+
+const tabs = ["Hero", "Profil Pengasuh", "Biaya", "Kurikulum", "Program", "Kontak", "Galeri", "YouTube", "Pesan Masuk"];
 
 export default function Dashboard() {
   const router = useRouter();
@@ -70,6 +79,8 @@ export default function Dashboard() {
   const [videoEmbed, setVideoEmbed] = useState("");
   const [mediaLoading, setMediaLoading] = useState(true);
   const [mediaSaving, setMediaSaving] = useState(false);
+  const [messages, setMessages] = useState<MessageItem[]>([]);
+  const [messagesLoading, setMessagesLoading] = useState(false);
 
   useEffect(() => {
     fetch("/api/admin-ponpesno1/konten")
@@ -101,7 +112,18 @@ export default function Dashboard() {
       .catch(() => router.push("/admin-ponpesno1"));
 
     loadMedia();
+    loadMessages();
   }, [router]);
+
+  async function loadMessages() {
+    setMessagesLoading(true);
+    const res = await fetch("/api/admin-ponpesno1/messages");
+    if (res.ok) {
+      const data = await res.json();
+      setMessages(Array.isArray(data) ? data : []);
+    }
+    setMessagesLoading(false);
+  }
 
   async function loadMedia() {
     setMediaLoading(true);
@@ -205,6 +227,13 @@ export default function Dashboard() {
     await fetch(`/api/admin-ponpesno1/youtube?id=${id}`, { method: "DELETE" });
     await loadMedia();
     setMediaSaving(false);
+  }
+
+  async function handleDeleteMessage(id: string) {
+    if (!confirm("Hapus pesan ini?")) return;
+    setMessagesLoading(true);
+    await fetch(`/api/admin-ponpesno1/messages?id=${id}`, { method: "DELETE" });
+    await loadMessages();
   }
 
   if (!konten) {
@@ -679,6 +708,45 @@ export default function Dashboard() {
               </div>
             </div>
           )}
+
+          {activeTab === "Pesan Masuk" && (
+            <div className="space-y-6">
+              <h2 className="font-extrabold text-gray-800 text-lg mb-4">Pesan Masuk dari Pengunjung</h2>
+              <div className="space-y-4">
+                {messagesLoading ? (
+                  <div className="text-gray-500">Memuat pesan...</div>
+                ) : messages.length === 0 ? (
+                  <div className="text-gray-500">Belum ada pesan yang masuk.</div>
+                ) : (
+                  messages.map((msg) => (
+                    <div key={msg.id} className="border border-gray-100 rounded-2xl p-5 shadow-sm bg-gray-50 relative">
+                      <div className="flex justify-between items-start mb-3">
+                        <div>
+                          <p className="font-bold text-gray-800 text-base">{msg.nama}</p>
+                          <p className="text-xs text-gray-500">{new Date(msg.created_at).toLocaleString('id-ID')}</p>
+                        </div>
+                        <button
+                          onClick={() => handleDeleteMessage(msg.id)}
+                          className="text-red-500 hover:text-red-700 text-xs font-semibold px-3 py-1 bg-white rounded-full border border-red-100"
+                        >
+                          Hapus
+                        </button>
+                      </div>
+                      <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4 bg-white p-3 rounded-xl border border-gray-100">
+                        {msg.email && <p><strong>Email:</strong> {msg.email}</p>}
+                        {msg.telepon && <p><strong>Telp/WA:</strong> {msg.telepon}</p>}
+                        {!msg.email && !msg.telepon && <p className="italic">Tidak ada kontak yang disertakan.</p>}
+                      </div>
+                      <div className="bg-white p-4 rounded-xl border border-gray-100">
+                        <p className="text-gray-800 whitespace-pre-wrap text-sm">{msg.pesan}</p>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
+
 
           <div className="mt-8 flex items-center gap-3">
             <button
