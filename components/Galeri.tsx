@@ -34,11 +34,11 @@ export default function Galeri() {
       .finally(() => setLoading(false));
   }, []);
 
-  const itemsToRender = galeriItems.length > 0 ? galeriItems.map((item) => ({
+  const itemsToRender = galeriItems.length > 0 ? galeriItems.slice(0, 6).map((item) => ({
     src: item.image_url,
     alt: item.title,
     caption: item.title,
-  })) : defaultItems;
+  })) : defaultItems.slice(0, 6);
 
   return (
     <section id="galeri" className="py-16 bg-green-50">
@@ -56,7 +56,7 @@ export default function Galeri() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {(loading ? defaultItems : itemsToRender).map((item, idx) => (
+          {(loading ? defaultItems.slice(0, 6) : itemsToRender).map((item, idx) => (
             <div
               key={idx}
               className="relative group overflow-hidden rounded-2xl shadow-md aspect-square"
