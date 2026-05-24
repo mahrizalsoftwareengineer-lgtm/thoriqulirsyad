@@ -71,9 +71,9 @@ export default function PondokKitabKuning() {
             <h3 className="text-2xl font-semibold text-yellow-800 mt-8 mb-4">Materi Kajian Kitab Kuning Meliputi:</h3>
             <ul className="list-disc pl-5 mb-6 space-y-2">
               <li><strong>Ilmu Alat (Nahwu & Sharaf):</strong> Dasar utama untuk membaca kitab kuning, menggunakan kitab-kitab standar seperti Al-Ajurrumiyah, Amtsilah Tashrifiyah, dan lainnya.</li>
-              <li><strong>Fiqih:</strong> Mempelajari tata cara ibadah dan muamalah harian berdasarkan madzhab Syafi'i, seperti kitab Safinatun Najah, Fathul Qorib.</li>
+              <li><strong>Fiqih:</strong> Mempelajari tata cara ibadah dan muamalah harian berdasarkan madzhab Syafi&apos;i, seperti kitab Safinatun Najah, Fathul Qorib.</li>
               <li><strong>Aqidah & Tauhid:</strong> Memperkuat keimanan dengan kitab-kitab dasar aqidah Ahlussunnah wal Jamaah.</li>
-              <li><strong>Akhlak & Tasawuf:</strong> Membentuk budi pekerti luhur berlandaskan kitab Ta'limul Muta'allim dan Washiyatul Musthafa.</li>
+              <li><strong>Akhlak & Tasawuf:</strong> Membentuk budi pekerti luhur berlandaskan kitab Ta&apos;limul Muta&apos;allim dan Washiyatul Musthafa.</li>
             </ul>
             <p>
               Dengan bimbingan langsung dari KH. Hakimin, <em>Pondok Pesantren Kitab Kuning di Wonosobo</em> ini berkomitmen mencetak kader ulama yang tidak hanya berilmu, tetapi juga amaliyah.

@@ -52,7 +52,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true, message: "Pesan berhasil dikirim." });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Contact API Error:", err);
     return NextResponse.json({ error: "Terjadi kesalahan internal server." }, { status: 500 });
   }
