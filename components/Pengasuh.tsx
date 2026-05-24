@@ -43,9 +43,9 @@ export default function Pengasuh({ data }: { data: ProfilData }) {
                 {data.gelar}
               </span>
               <h3 className="text-2xl font-extrabold text-gray-800 mb-4">{data.nama}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">{data.deskripsi}</p>
+              <p className="text-gray-600 text-base leading-relaxed mb-6">{data.deskripsi}</p>
 
-              <p className="text-xs font-bold text-green-700 uppercase tracking-wider mb-3">Riwayat Pendidikan</p>
+              <p className="text-sm font-bold text-green-700 uppercase tracking-wider mb-3">Riwayat Pendidikan</p>
               <ul className="space-y-2 mb-6">
                 {data.riwayat.map((item) => (
                   <li key={item} className="flex items-center gap-3">
@@ -56,15 +56,15 @@ export default function Pengasuh({ data }: { data: ProfilData }) {
                         <BookMarked size={14} className="text-green-700" />
                       )}
                     </div>
-                    <span className="text-sm text-gray-700">{item}</span>
+                    <span className="text-base text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
 
               <div className="bg-green-50 rounded-xl p-4">
-                <p className="text-xs text-gray-500 mb-1">Pengabdian</p>
-                <p className="text-sm font-semibold text-gray-800">{data.pengabdian}</p>
-                <p className="text-xs text-green-700 font-bold">{data.tahunPengabdian}</p>
+                <p className="text-sm text-gray-500 mb-1">Pengabdian</p>
+                <p className="text-base font-semibold text-gray-800">{data.pengabdian}</p>
+                <p className="text-sm text-green-700 font-bold">{data.tahunPengabdian}</p>
               </div>
             </div>
           </div>

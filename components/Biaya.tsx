@@ -25,7 +25,7 @@ export default function Biaya({ data }: { data: BiayaData }) {
             Investasi Pendidikan
           </span>
           <h2 className="text-3xl font-extrabold text-gray-800">Rincian Biaya Pondok</h2>
-          <p className="text-gray-500 mt-2 text-sm max-w-xl mx-auto">
+          <p className="text-gray-500 mt-2 text-base max-w-xl mx-auto">
             Biaya yang terjangkau dengan fasilitas dan program pendidikan berkualitas tinggi.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function Biaya({ data }: { data: BiayaData }) {
             <ul className="space-y-3 mb-6">
               {data.bulanan.map((item) => (
                 <li key={item.label} className="flex justify-between items-center py-2 border-b border-white/20">
-                  <span className="text-sm text-green-100">{item.label}</span>
+                  <span className="text-base text-green-100">{item.label}</span>
                   <span className="font-bold text-yellow-400">{item.amount}</span>
                 </li>
               ))}
@@ -70,7 +70,7 @@ export default function Biaya({ data }: { data: BiayaData }) {
             <ul className="space-y-3 mb-6">
               {data.awalMasuk.map((item) => (
                 <li key={item.label} className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="text-sm text-gray-700">{item.label}</span>
+                  <span className="text-base text-gray-700">{item.label}</span>
                   <span className="font-bold text-green-700">{item.amount}</span>
                 </li>
               ))}
@@ -80,12 +80,12 @@ export default function Biaya({ data }: { data: BiayaData }) {
               <span className="text-2xl font-extrabold text-green-700">{data.totalAwal}</span>
             </div>
             <div className="mt-6">
-              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Sudah Termasuk</p>
+              <p className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Sudah Termasuk</p>
               <div className="grid grid-cols-2 gap-2">
                 {fasilitas.map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle size={14} className="text-green-600 flex-shrink-0" />
-                    <span className="text-xs text-gray-700">{item}</span>
+                    <span className="text-sm text-gray-700">{item}</span>
                   </div>
                 ))}
               </div>
@@ -95,7 +95,7 @@ export default function Biaya({ data }: { data: BiayaData }) {
 
         <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 flex gap-3">
           <Info size={18} className="text-yellow-600 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-yellow-800">
+          <p className="text-base text-yellow-800">
             <strong>Catatan:</strong> Biaya dapat berubah sewaktu-waktu. Untuk informasi terkini, silakan hubungi pengurus pondok secara langsung.
           </p>
         </div>

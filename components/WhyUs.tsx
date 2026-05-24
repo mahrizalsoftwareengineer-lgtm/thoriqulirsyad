@@ -34,7 +34,7 @@ export default function WhyUs() {
           <h2 className="text-3xl font-extrabold text-gray-800">
             Mengapa Memilih Kami?
           </h2>
-          <p className="text-gray-500 mt-2 max-w-xl mx-auto text-sm">
+          <p className="text-gray-500 mt-2 max-w-xl mx-auto text-base">
             Sebagai salah satu pondok alquran wonosobo dan pondok kitab wonosobo terbaik, kami hadir untuk mencetak generasi penerus yang tidak hanya cerdas secara intelektual, tetapi juga kuat secara spiritual.
           </p>
         </div>
@@ -48,8 +48,8 @@ export default function WhyUs() {
               <div className="w-12 h-12 bg-green-700 rounded-xl flex items-center justify-center mb-4 group-hover:bg-yellow-400 transition-colors">
                 <item.icon size={22} className="text-white" />
               </div>
-              <h3 className="font-bold text-gray-800 mb-2">{item.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+              <h3 className="font-bold text-gray-800 text-lg mb-2">{item.title}</h3>
+              <p className="text-gray-500 text-base leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>

@@ -26,11 +26,11 @@ export default function Program({ data }: { data: ProgramData }) {
                 <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center flex-shrink-0">
                   <CalendarDays size={18} className="text-white" />
                 </div>
-                <h3 className="font-extrabold text-gray-800 text-base">{kat.title}</h3>
+                <h3 className="font-extrabold text-gray-800 text-lg">{kat.title}</h3>
               </div>
               <ol className="space-y-2">
                 {kat.items.map((item, i) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                  <li key={item} className="flex items-start gap-2 text-base text-gray-600">
                     <span className="text-green-700 font-semibold w-4 flex-shrink-0">{i + 1}.</span>
                     {item}
                   </li>
@@ -46,12 +46,12 @@ export default function Program({ data }: { data: ProgramData }) {
             <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center flex-shrink-0">
               <Sparkles size={18} className="text-white" />
             </div>
-            <h3 className="font-extrabold text-gray-800 text-base">Program Peningkatan Spiritual</h3>
+            <h3 className="font-extrabold text-gray-800 text-lg">Program Peningkatan Spiritual</h3>
           </div>
           <div className="bg-green-700 rounded-xl p-5">
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {data.spiritual.map((item) => (
-                <li key={item} className="flex items-center gap-2 text-white text-sm font-medium">
+                <li key={item} className="flex items-center gap-2 text-white text-base font-medium">
                   <span className="w-2 h-2 bg-white rounded-full flex-shrink-0" />
                   {item}
                 </li>
