@@ -73,9 +73,9 @@ export default function Kontak({ data }: { data: KontakData }) {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid md:grid-cols-2 gap-8 items-stretch">
           {/* Kolom Kiri: Info Kontak & Maps */}
-          <div className="space-y-6">
+          <div className="space-y-6 flex flex-col h-full">
             <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
               <h3 className="text-xl font-bold text-green-900 mb-6">Informasi Kontak</h3>
               
@@ -104,7 +104,7 @@ export default function Kontak({ data }: { data: KontakData }) {
               </a>
             </div>
 
-            <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 h-64">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex-1 min-h-[300px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.816261300921!2d109.91133417476154!3d-7.374479992634913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa117e4477a4b%3A0xab406cce37b22c42!2sPondok%20Pesantren%20Thoriqul%20Irsyad!5e0!3m2!1sid!2sid!4v1779091221865!5m2!1sid!2sid"
                 width="100%"
