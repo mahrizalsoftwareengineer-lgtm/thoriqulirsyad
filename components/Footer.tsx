@@ -8,12 +8,14 @@ type KontakData = {
 };
 
 const quickLinks = [
-  { label: "Beranda", href: "#beranda" },
-  { label: "Profil Pengasuh", href: "#profil" },
-  { label: "Program Unggulan", href: "#program" },
-  { label: "Galeri", href: "#galeri" },
-  { label: "Biaya Pondok", href: "#biaya" },
-  { label: "Kontak", href: "#kontak" },
+  { label: "Beranda", href: "/#beranda" },
+  { label: "Pondok Al Quran Wonosobo", href: "/pondok-al-quran-wonosobo" },
+  { label: "Pondok Kitab Wonosobo", href: "/pondok-kitab-kuning-wonosobo" },
+  { label: "Profil Pengasuh", href: "/#profil" },
+  { label: "Program Unggulan", href: "/#program" },
+  { label: "Galeri", href: "/#galeri" },
+  { label: "Biaya Pondok", href: "/#biaya" },
+  { label: "Kontak", href: "/#kontak" },
 ];
 
 export default function Footer({ kontak }: { kontak: KontakData }) {
