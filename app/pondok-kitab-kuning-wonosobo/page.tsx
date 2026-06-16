@@ -17,10 +17,13 @@ export const metadata: Metadata = {
     "Kajian Kitab Kuning Wonosobo",
     "Pesantren Salaf Wonosobo",
   ],
+  alternates: {
+    canonical: "/pondok-kitab-kuning-wonosobo",
+  },
   openGraph: {
     title: "Pondok Kitab Kuning Wonosobo | Kajian Salaf Thoriqul Irsyad",
     description: "Pondok Kitab Kuning di Wonosobo dengan kajian kitab salaf metode sorogan dan bandongan.",
-    url: "https://ppthoriqulirsyad.com/pondok-kitab-kuning-wonosobo",
+    url: "/pondok-kitab-kuning-wonosobo",
   },
 };
 

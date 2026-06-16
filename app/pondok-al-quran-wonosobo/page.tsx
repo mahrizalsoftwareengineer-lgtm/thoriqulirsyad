@@ -17,10 +17,13 @@ export const metadata: Metadata = {
     "Pondok Tahfidz Wonosobo",
     "Hafalan Al Quran Wonosobo",
   ],
+  alternates: {
+    canonical: "/pondok-al-quran-wonosobo",
+  },
   openGraph: {
     title: "Pondok Al Quran Wonosobo Terbaik | Tahfidz Thoriqul Irsyad",
     description: "Mencari Pondok Al Quran di Wonosobo? Thoriqul Irsyad adalah pilihan tepat untuk program Tahfidz Al-Quran.",
-    url: "https://ppthoriqulirsyad.com/pondok-al-quran-wonosobo",
+    url: "/pondok-al-quran-wonosobo",
   },
 };
 

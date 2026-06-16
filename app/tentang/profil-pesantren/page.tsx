@@ -71,11 +71,14 @@ export const metadata: Metadata = {
     "Profil Pondok Pesantren Wonosobo",
     "Pesantren Tahfidz Wonosobo",
   ],
+  alternates: {
+    canonical: "/tentang/profil-pesantren",
+  },
   openGraph: {
     title: "Profil Pondok Thoriqul Irsyad",
     description:
       "Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo — melihat sejarah, visi, dan program pesantren.",
-    url: "https://ppthoriqulirsyad.com/tentang/profil-pesantren",
+    url: "/tentang/profil-pesantren",
     images: ["/images/logo.jpeg"],
     type: "article",
   },

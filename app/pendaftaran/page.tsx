@@ -101,11 +101,14 @@ export const metadata: Metadata = {
     "Pendaftaran Pondok Pesantren Wonosobo",
     "Daftar Santri Baru Wonosobo",
   ],
+  alternates: {
+    canonical: "/pendaftaran",
+  },
   openGraph: {
     title: "Pendaftaran Santri Baru — Thoriqul Irsyad",
     description:
       "Pendaftaran santri baru Pondok Al Quran Wonosobo Pondok Kitab Kuning Wonosobo — resep pendidikan tahfidz dan kitab kuning.",
-    url: "https://ppthoriqulirsyad.com/pendaftaran",
+    url: "/pendaftaran",
     images: ["/images/logo.jpeg"],
     type: "website",
   },

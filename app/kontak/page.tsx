@@ -15,11 +15,14 @@ export const metadata: Metadata = {
     "Kontak Pondok Pesantren Wonosobo",
     "Alamat Pondok Pesantren Wonosobo",
   ],
+  alternates: {
+    canonical: "/kontak",
+  },
   openGraph: {
     title: "Kontak Pondok Al Quran Wonosobo | Thoriqul Irsyad",
     description:
       "Kontak Pondok Pesantren Thoriqul Irsyad — hubungi kami untuk pendaftaran santri baru dan informasi Pondok Kitab Kuning Wonosobo.",
-    url: "https://ppthoriqulirsyad.com/kontak",
+    url: "/kontak",
     images: ["/images/logo.jpeg"],
     type: "website",
   },

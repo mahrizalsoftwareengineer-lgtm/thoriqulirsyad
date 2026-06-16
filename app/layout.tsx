@@ -4,6 +4,7 @@ import "./globals.css";
 const siteUrl = "https://ppthoriqulirsyad.com";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Thoriqul Irsyad | Pondok Pesantren Al Quran & Kitab Wonosobo",
   description:
     "Mencari pondok quran wonosobo atau pondok kitab wonosobo? Ponpes Thoriqul Irsyad adalah pilihan tepat pondok alquran untuk tahfidz dan kajian kitab kuning.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     title: "Thoriqul Irsyad | Pondok Pesantren Al Quran & Kitab Wonosobo",
     description:
       "Mencari pondok quran wonosobo atau pondok kitab wonosobo? Ponpes Thoriqul Irsyad adalah pilihan tepat pondok alquran untuk tahfidz dan kajian kitab kuning.",
-    url: siteUrl,
+    url: "/",
     siteName: "Pondok Pesantren Thoriqul Irsyad",
     images: ["/images/logo.jpeg"],
     locale: "id_ID",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: "/",
   },
   verification: {
     google: "p8O1ZReyxFX9XNl6nPFRVw8aA3aOZB1PH4GNXjwnm1k",

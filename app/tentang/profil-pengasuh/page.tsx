@@ -103,11 +103,14 @@ export const metadata: Metadata = {
     "Pengasuh Pondok Pesantren Wonosobo",
     "Pengasuh Tahfidz Wonosobo",
   ],
+  alternates: {
+    canonical: "/tentang/profil-pengasuh",
+  },
   openGraph: {
     title: "Profil Pengasuh — Thoriqul Irsyad",
     description:
       "Profil pengasuh dan pengalaman mengajar di Pondok Al Quran Wonosobo dan Pondok Kitab Kuning Wonosobo.",
-    url: "https://ppthoriqulirsyad.com/tentang/profil-pengasuh",
+    url: "/tentang/profil-pengasuh",
     images: ["/images/pak kyai Hakimin dan Istri.jpeg"],
     type: "profile",
   },
