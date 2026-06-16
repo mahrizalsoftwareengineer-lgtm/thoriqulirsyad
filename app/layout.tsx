@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 const siteUrl = "https://ppthoriqulirsyad.com";
@@ -141,6 +142,20 @@ export default function RootLayout({
 
   return (
     <html lang="id">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GMYBE4KZYG"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GMYBE4KZYG');
+          `}
+        </Script>
+      </head>
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: orgSchema }} />
         {children}
