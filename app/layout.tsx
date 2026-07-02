@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const siteUrl = "https://ppthoriqulirsyad.com";
@@ -159,6 +160,7 @@ export default function RootLayout({
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: orgSchema }} />
         {children}
+        <Analytics />
       </body>
     </html>
   );
