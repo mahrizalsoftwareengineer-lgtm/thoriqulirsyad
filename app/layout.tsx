@@ -6,7 +6,7 @@ const siteUrl = "https://ppthoriqulirsyad.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Thoriqul Irsyad | Pondok Pesantren Al Quran & Kitab Wonosobo",
+  title: "Pondok Pesantren Al Quran & Kitab Wonosobo | Thoriqul Irsyad",
   description:
     "Mencari pondok quran wonosobo atau pondok kitab wonosobo? Ponpes Thoriqul Irsyad adalah pilihan tepat pondok alquran untuk tahfidz dan kajian kitab kuning.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Pondok Pesantren Thoriqul Irsyad" }],
   openGraph: {
-    title: "Thoriqul Irsyad | Pondok Pesantren Al Quran & Kitab Wonosobo",
+    title: "Pondok Pesantren Al Quran & Kitab Wonosobo | Thoriqul Irsyad",
     description:
       "Mencari pondok quran wonosobo atau pondok kitab wonosobo? Ponpes Thoriqul Irsyad adalah pilihan tepat pondok alquran untuk tahfidz dan kajian kitab kuning.",
     url: "/",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thoriqul Irsyad | Pondok Pesantren Al Quran & Kitab Wonosobo",
+    title: "Pondok Pesantren Al Quran & Kitab Wonosobo | Thoriqul Irsyad",
     description:
       "Mencari pondok quran wonosobo atau pondok kitab wonosobo? Ponpes Thoriqul Irsyad adalah pilihan tepat pondok alquran untuk tahfidz dan kajian kitab kuning.",
     images: ["/images/logo.jpeg"],
