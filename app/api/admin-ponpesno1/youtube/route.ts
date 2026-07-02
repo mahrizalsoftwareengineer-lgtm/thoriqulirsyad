@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 
 const TABLE = "youtube_videos";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 
 
   const { data, error } = await supabase

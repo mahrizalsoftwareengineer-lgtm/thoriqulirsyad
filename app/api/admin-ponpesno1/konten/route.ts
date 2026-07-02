@@ -5,7 +5,7 @@ import defaultKonten from "@/data/konten.json";
 
 const KEY = "konten_utama";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 
 
   const { data, error } = await supabase

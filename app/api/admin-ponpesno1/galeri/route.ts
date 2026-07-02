@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 
 const TABLE = "gallery";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 
 
   const { data, error } = await supabase
