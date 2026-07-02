@@ -28,11 +28,12 @@ export default function CTA({ kontak }: { kontak: KontakData }) {
                   href={`https://wa.me/${kontak.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Daftar Santri Baru via WhatsApp"
                   className="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold px-6 py-3 rounded-full text-sm transition-colors"
                 >
                   Daftar via WhatsApp
                 </a>
-                <a href="#kontak" className="border-2 border-white text-white hover:bg-white hover:text-green-800 font-bold px-6 py-3 rounded-full text-sm transition-colors">
+                <a href="#kontak" title="Hubungi Pondok Pesantren Thoriqul Irsyad" className="border-2 border-white text-white hover:bg-white hover:text-green-800 font-bold px-6 py-3 rounded-full text-sm transition-colors">
                   Hubungi Kami
                 </a>
               </div>

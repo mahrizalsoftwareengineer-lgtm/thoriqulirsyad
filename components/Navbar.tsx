@@ -5,30 +5,30 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Beranda", href: "/" },
+  { label: "Beranda", href: "/", title: "Beranda — Pondok Pesantren Thoriqul Irsyad" },
   {
     label: "Tentang",
     children: [
-      { label: "Profil Pesantren", href: "/tentang/profil-pesantren" },
-      { label: "Profil Pengasuh", href: "/tentang/profil-pengasuh" },
+      { label: "Profil Pesantren", href: "/tentang/profil-pesantren", title: "Profil Pondok Pesantren Thoriqul Irsyad" },
+      { label: "Profil Pengasuh", href: "/tentang/profil-pengasuh", title: "Profil Pengasuh Pondok Pesantren Thoriqul Irsyad" },
     ],
   },
   {
     label: "Pendidikan",
     children: [
-      { label: "Kurikulum", href: "/pendidikan/kurikulum" },
-      { label: "Program", href: "/pendidikan/program" },
+      { label: "Kurikulum", href: "/pendidikan/kurikulum", title: "Kurikulum Pondok Pesantren Thoriqul Irsyad" },
+      { label: "Program", href: "/pendidikan/program", title: "Program Unggulan Pondok Pesantren Thoriqul Irsyad" },
     ],
   },
   {
     label: "Media",
     children: [
-      { label: "Galeri Foto", href: "/media/galeri" },
-      { label: "Video", href: "/media/video" },
+      { label: "Galeri Foto", href: "/media/galeri", title: "Galeri Foto Pondok Pesantren Thoriqul Irsyad" },
+      { label: "Video", href: "/media/video", title: "Video Kegiatan Pondok Pesantren Thoriqul Irsyad" },
     ],
   },
-  { label: "Pendaftaran", href: "/pendaftaran" },
-  { label: "Kontak", href: "/kontak" },
+  { label: "Pendaftaran", href: "/pendaftaran", title: "Pendaftaran Santri Baru Pondok Pesantren Thoriqul Irsyad" },
+  { label: "Kontak", href: "/kontak", title: "Kontak Pondok Pesantren Thoriqul Irsyad" },
 ];
 
 function DropdownItem({ item }: { item: typeof navItems[0] }) {
@@ -45,7 +45,7 @@ function DropdownItem({ item }: { item: typeof navItems[0] }) {
 
   if (!item.children) {
     return (
-      <Link href={item.href!} className="text-base font-medium text-gray-700 hover:text-green-700 transition-colors px-1">
+      <Link href={item.href!} title={item.title} className="text-base font-medium text-gray-700 hover:text-green-700 transition-colors px-1">
         {item.label}
       </Link>
     );
@@ -69,6 +69,7 @@ function DropdownItem({ item }: { item: typeof navItems[0] }) {
             <Link
               key={child.href}
               href={child.href}
+              title={child.title}
               onClick={() => setOpen(false)}
               className="block px-4 py-2.5 text-base text-gray-700 hover:bg-green-50 hover:text-green-700 first:rounded-t-2xl last:rounded-b-2xl transition-colors"
             >
@@ -89,7 +90,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" title="Beranda — Pondok Pesantren Thoriqul Irsyad" className="flex items-center gap-3">
           <Image
             src="/images/logo.jpeg"
             alt="Logo Pondok Pesantren Thoriqul Irsyad — Pondok Al Quran Wonosobo"
@@ -113,6 +114,7 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="/pendaftaran"
+          title="Daftar Santri Baru Pondok Pesantren Thoriqul Irsyad"
           className="hidden md:inline-block bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold text-base px-5 py-2 rounded-full transition-colors"
         >
           Daftar Sekarang
@@ -143,7 +145,7 @@ export default function Navbar() {
                       <ul className="pl-4 space-y-1 mb-2">
                         {item.children.map((child) => (
                           <li key={child.href}>
-                            <Link href={child.href} className="block text-base text-gray-600 hover:text-green-700 py-1.5" onClick={() => setMobileOpen(false)}>
+                            <Link href={child.href} title={child.title} className="block text-base text-gray-600 hover:text-green-700 py-1.5" onClick={() => setMobileOpen(false)}>
                               {child.label}
                             </Link>
                           </li>
@@ -152,14 +154,14 @@ export default function Navbar() {
                     )}
                   </div>
                 ) : (
-                  <Link href={item.href!} className="block text-base font-medium text-gray-700 py-2" onClick={() => setMobileOpen(false)}>
+                  <Link href={item.href!} title={item.title} className="block text-base font-medium text-gray-700 py-2" onClick={() => setMobileOpen(false)}>
                     {item.label}
                   </Link>
                 )}
               </li>
             ))}
             <li className="mt-2">
-              <Link href="/pendaftaran" className="inline-block bg-yellow-400 text-green-900 font-bold text-base px-5 py-2 rounded-full" onClick={() => setMobileOpen(false)}>
+              <Link href="/pendaftaran" title="Daftar Santri Baru Pondok Pesantren Thoriqul Irsyad" className="inline-block bg-yellow-400 text-green-900 font-bold text-base px-5 py-2 rounded-full" onClick={() => setMobileOpen(false)}>
                 Daftar Sekarang
               </Link>
             </li>

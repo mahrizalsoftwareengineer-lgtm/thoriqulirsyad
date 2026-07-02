@@ -4,6 +4,7 @@ export default function WhatsAppButton({ whatsapp }: { whatsapp: string }) {
       href={`https://wa.me/${whatsapp}`}
       target="_blank"
       rel="noopener noreferrer"
+      title="Chat via WhatsApp dengan Pondok Pesantren Thoriqul Irsyad"
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg hover:shadow-green-400/50 transition-all hover:scale-110"
       aria-label="Chat via WhatsApp"
     >

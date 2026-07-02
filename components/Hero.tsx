@@ -31,10 +31,10 @@ export default function Hero({ data }: { data: HeroData }) {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <a href="#daftar" className="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold px-6 py-3 rounded-full text-sm transition-colors">
+            <a href="#daftar" title="Daftar Santri Baru Pondok Pesantren Thoriqul Irsyad" className="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold px-6 py-3 rounded-full text-sm transition-colors">
               Daftar Sekarang
             </a>
-            <a href="#profil" className="border-2 border-white text-white hover:bg-white hover:text-green-800 font-bold px-6 py-3 rounded-full text-sm transition-colors">
+            <a href="#profil" title="Pelajari Lebih Lanjut tentang Pondok Pesantren Thoriqul Irsyad" className="border-2 border-white text-white hover:bg-white hover:text-green-800 font-bold px-6 py-3 rounded-full text-sm transition-colors">
               Pelajari Lebih Lanjut
             </a>
           </div>
@@ -45,7 +45,7 @@ export default function Hero({ data }: { data: HeroData }) {
             <Image src="/images/galeri 1 di dero.jpeg" alt="Kegiatan Santri Tahfidz Pondok Al Quran Wonosobo" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" priority />
           </div>
           <div className="relative w-72 h-52 rotate-2 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 -mt-6 ml-8">
-            <Image src="/images/galeri 2 pak jumeno.jpeg" alt="Kegiatan Santri Pondok Al Quran Wonosobo" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+            <Image src="/images/galeri 2 pak jumeno.jpeg" alt="Kegiatan Santri Pondok Al Quran Wonosobo" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" priority />
           </div>
         </div>
       </div>

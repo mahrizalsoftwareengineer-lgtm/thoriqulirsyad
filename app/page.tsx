@@ -1,4 +1,3 @@
-"use client";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import WhyUs from "@/components/WhyUs";
@@ -11,10 +10,12 @@ import CTA from "@/components/CTA";
 import Kontak from "@/components/Kontak";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { useKonten } from "@/lib/useKonten";
+import { fetchKonten } from "@/lib/fetchKonten";
 
-export default function Home() {
-  const konten = useKonten();
+// Server Component — data fetched on the server before HTML is sent.
+// This eliminates the client-side waterfall that was causing the 3s+ LCP delay.
+export default async function Home() {
+  const konten = await fetchKonten();
 
   return (
     <main>

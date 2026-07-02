@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const siteUrl = "https://ppthoriqulirsyad.com";
@@ -143,6 +144,11 @@ export default function RootLayout({
   return (
     <html lang="id">
       <head>
+        {/* Preconnect to external origins used on first paint */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
+        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
+
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-GMYBE4KZYG"
           strategy="afterInteractive"
@@ -159,6 +165,7 @@ export default function RootLayout({
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: orgSchema }} />
         {children}
+        <Analytics />
       </body>
     </html>
   );

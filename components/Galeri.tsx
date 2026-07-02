@@ -78,6 +78,7 @@ export default function Galeri() {
         <div className="text-center mt-8">
           <a
             href="/media/galeri"
+            title="Lihat Galeri Lengkap Pondok Pesantren Thoriqul Irsyad"
             className="inline-block border-2 border-green-700 text-green-700 hover:bg-green-700 hover:text-white font-bold px-8 py-3 rounded-full text-sm transition-colors"
           >
             Lihat Lebih Detail
