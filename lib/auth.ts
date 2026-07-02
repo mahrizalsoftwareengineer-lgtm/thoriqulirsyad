@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import { SignJWT, jwtVerify } from "jose";
 
 // Semua kredensial WAJIB diset via environment variables.
 // Tidak ada fallback hardcoded untuk mencegah kebocoran credentials.
@@ -6,13 +6,13 @@ const SECRET = process.env.PANEL_SECRET ?? process.env.ADMIN_SECRET;
 const PANEL_USER = process.env.PANEL_USERNAME ?? process.env.ADMIN_USERNAME;
 const PANEL_PASS = process.env.PANEL_PASSWORD ?? process.env.ADMIN_PASSWORD;
 
-function getSecret(): string {
+function getSecretKey(): Uint8Array {
   if (!SECRET) {
     throw new Error(
       "PANEL_SECRET atau ADMIN_SECRET harus dikonfigurasi di environment variables"
     );
   }
-  return SECRET;
+  return new TextEncoder().encode(SECRET);
 }
 
 export function verifyCredentials(username: string, password: string): boolean {
@@ -27,13 +27,18 @@ export function verifyCredentials(username: string, password: string): boolean {
   return usernameMatch && passwordMatch;
 }
 
-export function signToken(username: string): string {
-  return jwt.sign({ username }, getSecret(), { expiresIn: "7d" });
+export async function signToken(username: string): Promise<string> {
+  return await new SignJWT({ username })
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime("7d")
+    .sign(getSecretKey());
 }
 
-export function verifyToken(token: string): { username: string } | null {
+export async function verifyToken(token: string): Promise<{ username: string } | null> {
   try {
-    return jwt.verify(token, getSecret()) as { username: string };
+    const { payload } = await jwtVerify(token, getSecretKey());
+    return payload as { username: string };
   } catch {
     return null;
   }

@@ -1,14 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyToken } from "@/lib/auth";
+
 import { supabase } from "@/lib/supabase";
 
 const TABLE = "youtube_videos";
 
 export async function GET(req: NextRequest) {
-  const token = req.cookies.get("panel_token")?.value;
-  if (!token || !verifyToken(token)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+
 
   const { data, error } = await supabase
     .from(TABLE)
@@ -23,10 +20,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const token = req.cookies.get("panel_token")?.value;
-  if (!token || !verifyToken(token)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+
 
   const body = await req.json();
   const { embed_code } = body;
@@ -44,10 +38,7 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  const token = req.cookies.get("panel_token")?.value;
-  if (!token || !verifyToken(token)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+
 
   const id = req.nextUrl.searchParams.get("id");
   if (!id) {

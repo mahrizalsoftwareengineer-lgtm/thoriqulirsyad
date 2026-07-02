@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
   // Login berhasil — hapus catatan percobaan gagal
   clearAttempts(ip);
 
-  const token = signToken(username);
+  const token = await signToken(username);
   const res = NextResponse.json({ success: true });
   res.cookies.set("panel_token", token, {
     httpOnly: true,

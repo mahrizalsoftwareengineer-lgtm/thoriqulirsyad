@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyToken } from "@/lib/auth";
+
 import { supabase } from "@/lib/supabase";
 import defaultKonten from "@/data/konten.json";
 
 const KEY = "konten_utama";
 
 export async function GET(req: NextRequest) {
-  const token = req.cookies.get("panel_token")?.value;
-  if (!token || !verifyToken(token)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+
 
   const { data, error } = await supabase
     .from("konten")
@@ -26,10 +23,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const token = req.cookies.get("panel_token")?.value;
-  if (!token || !verifyToken(token)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+
 
   const body = await req.json();
 
