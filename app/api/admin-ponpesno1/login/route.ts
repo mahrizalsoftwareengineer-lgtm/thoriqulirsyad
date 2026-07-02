@@ -1,12 +1,78 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyCredentials, signToken } from "@/lib/auth";
+import {
+  checkRateLimit,
+  recordFailedAttempt,
+  clearAttempts,
+  cleanupOldEntries,
+} from "@/lib/rateLimiter";
 
 export async function POST(req: NextRequest) {
-  const { username, password } = await req.json();
+  // Ambil IP dari header (support proxy/load balancer)
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+    req.headers.get("x-real-ip") ??
+    "unknown";
 
-  if (!verifyCredentials(username, password)) {
-    return NextResponse.json({ error: "Username atau password salah" }, { status: 401 });
+  // Bersihkan entri lama secara periodik
+  cleanupOldEntries();
+
+  // Cek rate limit sebelum memproses request
+  const { allowed, retryAfterSeconds } = checkRateLimit(ip);
+  if (!allowed) {
+    return NextResponse.json(
+      {
+        error: `Terlalu banyak percobaan login. Coba lagi dalam ${retryAfterSeconds} detik.`,
+      },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(retryAfterSeconds),
+        },
+      }
+    );
   }
+
+  let body: { username?: string; password?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Request tidak valid" }, { status: 400 });
+  }
+
+  const { username, password } = body;
+
+  if (!username || !password) {
+    return NextResponse.json(
+      { error: "Username dan password wajib diisi" },
+      { status: 400 }
+    );
+  }
+
+  let credentialsValid: boolean;
+  try {
+    credentialsValid = verifyCredentials(username, password);
+  } catch (err) {
+    // verifyCredentials melempar error jika env vars tidak dikonfigurasi
+    console.error("Auth config error:", err);
+    return NextResponse.json(
+      { error: "Konfigurasi server bermasalah" },
+      { status: 500 }
+    );
+  }
+
+  if (!credentialsValid) {
+    // Catat percobaan gagal untuk rate limiting
+    recordFailedAttempt(ip);
+    // Pesan error generik — jangan beri tahu username mana yang salah
+    return NextResponse.json(
+      { error: "Username atau password salah" },
+      { status: 401 }
+    );
+  }
+
+  // Login berhasil — hapus catatan percobaan gagal
+  clearAttempts(ip);
 
   const token = signToken(username);
   const res = NextResponse.json({ success: true });
