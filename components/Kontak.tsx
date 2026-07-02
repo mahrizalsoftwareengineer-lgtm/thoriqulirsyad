@@ -97,6 +97,7 @@ export default function Kontak({ data }: { data: KontakData }) {
                 href={`https://wa.me/${data.whatsapp}`} 
                 target="_blank" 
                 rel="noreferrer"
+                title="Chat dengan Pondok Pesantren Thoriqul Irsyad via WhatsApp"
                 className="mt-8 w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-sm"
               >
                 <MessageCircle size={20} />

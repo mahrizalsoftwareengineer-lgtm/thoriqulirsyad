@@ -47,7 +47,7 @@ export default function Footer({ kontak }: { kontak: KontakData }) {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-sm text-green-200 hover:text-white transition-colors">
+                  <a href={link.href} title={link.label} className="text-sm text-green-200 hover:text-white transition-colors">
                     {link.label}
                   </a>
                 </li>
