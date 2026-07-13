@@ -1,4 +1,5 @@
 import { SignJWT, jwtVerify } from "jose";
+import { timingSafeEqual } from "crypto";
 
 // Semua kredensial WAJIB diset via environment variables.
 // Tidak ada fallback hardcoded untuk mencegah kebocoran credentials.
@@ -15,15 +16,29 @@ function getSecretKey(): Uint8Array {
   return new TextEncoder().encode(SECRET);
 }
 
+/**
+ * Perbandingan string yang aman dari timing attack.
+ * Selalu membandingkan seluruh string tanpa short-circuit.
+ */
+function safeCompare(a: string, b: string): boolean {
+  // Panjang harus sama dulu — kalau beda langsung false, tapi tetap lanjut operasi
+  // agar waktu eksekusi konsisten
+  const aBuf = Buffer.from(a.padEnd(Math.max(a.length, b.length)));
+  const bBuf = Buffer.from(b.padEnd(Math.max(a.length, b.length)));
+  const equal = timingSafeEqual(aBuf, bBuf);
+  // Kembalikan false juga kalau panjang aslinya beda
+  return equal && a.length === b.length;
+}
+
 export function verifyCredentials(username: string, password: string): boolean {
   if (!PANEL_USER || !PANEL_PASS) {
     throw new Error(
       "PANEL_USERNAME/ADMIN_USERNAME dan PANEL_PASSWORD/ADMIN_PASSWORD harus dikonfigurasi di environment variables"
     );
   }
-  // Gunakan perbandingan konstan-waktu untuk mencegah timing attack
-  const usernameMatch = username === PANEL_USER;
-  const passwordMatch = password === PANEL_PASS;
+  // Gunakan safeCompare untuk mencegah timing attack
+  const usernameMatch = safeCompare(username, PANEL_USER);
+  const passwordMatch = safeCompare(password, PANEL_PASS);
   return usernameMatch && passwordMatch;
 }
 

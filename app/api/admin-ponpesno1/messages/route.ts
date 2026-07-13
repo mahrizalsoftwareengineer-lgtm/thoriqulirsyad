@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { verifyToken } from "@/lib/auth";
 
-export async function GET() {
-
+export async function GET(req: NextRequest) {
+  // Verifikasi token — defense-in-depth selain middleware
+  const token = req.cookies.get("panel_token")?.value;
+  if (!token || !(await verifyToken(token))) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   const { data, error } = await supabaseAdmin
     .from("messages")
@@ -18,7 +23,11 @@ export async function GET() {
 }
 
 export async function DELETE(req: NextRequest) {
-
+  // Verifikasi token — defense-in-depth selain middleware
+  const token = req.cookies.get("panel_token")?.value;
+  if (!token || !(await verifyToken(token))) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   const id = req.nextUrl.searchParams.get("id");
   if (!id) {

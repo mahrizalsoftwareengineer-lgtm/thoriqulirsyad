@@ -14,11 +14,11 @@ export async function POST(req: NextRequest) {
     req.headers.get("x-real-ip") ??
     "unknown";
 
-  // Bersihkan entri lama secara periodik
+  // Bersihkan entri lama (no-op dengan Upstash Redis)
   cleanupOldEntries();
 
-  // Cek rate limit sebelum memproses request
-  const { allowed, retryAfterSeconds } = checkRateLimit(ip);
+  // Cek rate limit sebelum memproses request (Redis-backed, serverless-safe)
+  const { allowed, retryAfterSeconds } = await checkRateLimit(ip);
   if (!allowed) {
     return NextResponse.json(
       {
@@ -62,8 +62,8 @@ export async function POST(req: NextRequest) {
   }
 
   if (!credentialsValid) {
-    // Catat percobaan gagal untuk rate limiting
-    recordFailedAttempt(ip);
+    // Catat percobaan gagal (no-op dengan Upstash — sudah dihitung otomatis)
+    await recordFailedAttempt(ip);
     // Pesan error generik — jangan beri tahu username mana yang salah
     return NextResponse.json(
       { error: "Username atau password salah" },
@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Login berhasil — hapus catatan percobaan gagal
-  clearAttempts(ip);
+  await clearAttempts(ip);
 
   const token = await signToken(username);
   const res = NextResponse.json({ success: true });

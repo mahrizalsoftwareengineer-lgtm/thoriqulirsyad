@@ -1,97 +1,70 @@
 /**
- * In-memory rate limiter untuk login endpoint.
- * Melacak percobaan login gagal per IP address.
+ * Rate limiter berbasis Upstash Redis — efektif untuk serverless/multi-instance.
+ * Menyimpan hitungan percobaan login di Redis sehingga semua server instance
+ * membaca data yang sama, tidak seperti in-memory Map yang tereset tiap cold start.
  *
- * Catatan: In-memory limiter ini hanya efektif untuk single-instance deployment.
- * Untuk multi-instance / serverless edge, gunakan Redis-based rate limiter
- * (misalnya @upstash/ratelimit).
+ * Konfigurasi: tambahkan di .env.local
+ *   UPSTASH_REDIS_REST_URL=...
+ *   UPSTASH_REDIS_REST_TOKEN=...
  */
 
-interface Attempt {
-  count: number;
-  firstAttempt: number;
-  lockedUntil?: number;
-}
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
-const attempts = new Map<string, Attempt>();
+// Inisialisasi Redis dari environment variables
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL!,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+});
 
-// Konfigurasi
-const MAX_ATTEMPTS = 5;           // Maks percobaan gagal sebelum dikunci
-const WINDOW_MS = 15 * 60 * 1000; // Window 15 menit
-const LOCKOUT_MS = 15 * 60 * 1000; // Dikunci selama 15 menit
+// Rate limiter: maks 5 percobaan per 15 menit per IP (sliding window)
+const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(5, "15 m"),
+  prefix: "login_ratelimit", // prefix key di Redis
+  analytics: false,
+});
 
 /**
- * Cek apakah IP sedang di-rate limit.
- * @returns objek { allowed: boolean; retryAfterSeconds?: number }
+ * Cek apakah IP boleh melakukan percobaan login.
+ * @returns { allowed: boolean; retryAfterSeconds?: number }
  */
-export function checkRateLimit(ip: string): {
+export async function checkRateLimit(ip: string): Promise<{
   allowed: boolean;
   retryAfterSeconds?: number;
-} {
-  const now = Date.now();
-  const entry = attempts.get(ip);
+}> {
+  const { success, reset } = await ratelimit.limit(ip);
 
-  // Tidak ada catatan → izinkan
-  if (!entry) {
-    return { allowed: true };
+  if (!success) {
+    const retryAfterSeconds = Math.ceil((reset - Date.now()) / 1000);
+    return { allowed: false, retryAfterSeconds: Math.max(retryAfterSeconds, 1) };
   }
 
-  // Masih dalam masa lockout
-  if (entry.lockedUntil && now < entry.lockedUntil) {
-    const retryAfterSeconds = Math.ceil((entry.lockedUntil - now) / 1000);
-    return { allowed: false, retryAfterSeconds };
-  }
-
-  // Window sudah berlalu → reset
-  if (now - entry.firstAttempt > WINDOW_MS) {
-    attempts.delete(ip);
-    return { allowed: true };
-  }
-
-  // Masih dalam window dan belum melebihi batas → izinkan
-  if (entry.count < MAX_ATTEMPTS) {
-    return { allowed: true };
-  }
-
-  // Sudah melebihi batas — kunci
-  const lockedUntil = now + LOCKOUT_MS;
-  attempts.set(ip, { ...entry, lockedUntil });
-  const retryAfterSeconds = Math.ceil(LOCKOUT_MS / 1000);
-  return { allowed: false, retryAfterSeconds };
+  return { allowed: true };
 }
 
 /**
- * Catat percobaan login gagal untuk IP tertentu.
+ * Reset hitungan percobaan gagal setelah login berhasil.
+ * Dengan sliding window Upstash, tidak perlu reset manual —
+ * fungsi ini disediakan agar interface tetap kompatibel dengan login route.
  */
-export function recordFailedAttempt(ip: string): void {
-  const now = Date.now();
-  const entry = attempts.get(ip);
-
-  if (!entry || now - entry.firstAttempt > WINDOW_MS) {
-    attempts.set(ip, { count: 1, firstAttempt: now });
-  } else {
-    attempts.set(ip, { ...entry, count: entry.count + 1 });
-  }
+export async function clearAttempts(_ip: string): Promise<void> {
+  // Sliding window di Upstash otomatis expire — tidak perlu reset manual.
+  // Fungsi ini dipertahankan agar login/route.ts tidak perlu diubah.
 }
 
 /**
- * Hapus catatan percobaan gagal setelah login berhasil.
+ * Stub untuk kompatibilitas — dengan Upstash, pencatatan sudah
+ * dilakukan otomatis saat checkRateLimit() dipanggil.
  */
-export function clearAttempts(ip: string): void {
-  attempts.delete(ip);
+export async function recordFailedAttempt(_ip: string): Promise<void> {
+  // Tidak diperlukan — Upstash sliding window menghitung semua request,
+  // bukan hanya yang gagal. Login route tetap memanggil ini tapi aman diabaikan.
 }
 
 /**
- * Bersihkan entri lama secara periodik agar memory tidak terus bertambah.
- * Dipanggil otomatis setiap kali ada request.
+ * Stub untuk kompatibilitas — Upstash Redis menangani cleanup otomatis via TTL.
  */
 export function cleanupOldEntries(): void {
-  const now = Date.now();
-  for (const [ip, entry] of attempts.entries()) {
-    const expired = !entry.lockedUntil && now - entry.firstAttempt > WINDOW_MS;
-    const lockExpired = entry.lockedUntil && now > entry.lockedUntil + WINDOW_MS;
-    if (expired || lockExpired) {
-      attempts.delete(ip);
-    }
-  }
+  // Tidak diperlukan dengan Redis — data expire otomatis.
 }

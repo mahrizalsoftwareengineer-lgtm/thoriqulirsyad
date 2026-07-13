@@ -5,12 +5,39 @@ import { supabaseAdmin } from "@/lib/supabaseAdmin";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const toEmail = process.env.CONTACT_EMAIL_TO || "ponpesthoriqulirsyad@gmail.com";
 
+/**
+ * Escape karakter HTML untuk mencegah XSS di email.
+ */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+}
+
 export async function POST(req: Request) {
   try {
     const { nama, email, telepon, pesan } = await req.json();
 
+    // Validasi input wajib
     if (!nama || !pesan) {
       return NextResponse.json({ error: "Nama dan Pesan wajib diisi." }, { status: 400 });
+    }
+
+    // Batasi panjang input untuk mencegah abuse
+    if (typeof nama !== "string" || nama.length > 100) {
+      return NextResponse.json({ error: "Nama maksimal 100 karakter." }, { status: 400 });
+    }
+    if (typeof pesan !== "string" || pesan.length > 2000) {
+      return NextResponse.json({ error: "Pesan maksimal 2000 karakter." }, { status: 400 });
+    }
+    if (email && (typeof email !== "string" || email.length > 200)) {
+      return NextResponse.json({ error: "Email tidak valid." }, { status: 400 });
+    }
+    if (telepon && (typeof telepon !== "string" || telepon.length > 20)) {
+      return NextResponse.json({ error: "Nomor telepon tidak valid." }, { status: 400 });
     }
 
     // 1. Simpan ke database Supabase
@@ -30,20 +57,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Gagal menyimpan pesan ke database." }, { status: 500 });
     }
 
-    // 2. Kirim Notifikasi Email via Resend
+    // 2. Kirim Notifikasi Email via Resend — semua input di-escape untuk mencegah XSS
     try {
       await resend.emails.send({
-        from: "Website Pesantren <onboarding@resend.dev>", // Menggunakan default resend jika belum setup domain
+        from: "Website Pesantren <onboarding@resend.dev>",
         to: toEmail,
-        subject: `Pesan Baru dari ${nama} - Website Thoriqul Irsyad`,
+        subject: `Pesan Baru dari ${escapeHtml(nama)} - Website Thoriqul Irsyad`,
         html: `
           <h3>Pesan Baru dari Pengunjung Website</h3>
-          <p><strong>Nama:</strong> ${nama}</p>
-          <p><strong>Email:</strong> ${email || "-"}</p>
-          <p><strong>No Telepon:</strong> ${telepon || "-"}</p>
+          <p><strong>Nama:</strong> ${escapeHtml(nama)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email || "-")}</p>
+          <p><strong>No Telepon:</strong> ${escapeHtml(telepon || "-")}</p>
           <br/>
           <p><strong>Pesan:</strong></p>
-          <p>${pesan}</p>
+          <p>${escapeHtml(pesan)}</p>
         `,
       });
     } catch (emailErr) {

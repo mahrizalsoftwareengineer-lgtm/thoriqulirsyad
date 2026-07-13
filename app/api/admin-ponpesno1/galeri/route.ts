@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { supabase } from "@/lib/supabase";
+import { verifyToken } from "@/lib/auth";
 
 const TABLE = "gallery";
 
-export async function GET() {
-
+export async function GET(req: NextRequest) {
+  // Verifikasi token — defense-in-depth selain middleware
+  const token = req.cookies.get("panel_token")?.value;
+  if (!token || !(await verifyToken(token))) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   const { data, error } = await supabase
     .from(TABLE)
@@ -20,7 +25,11 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-
+  // Verifikasi token — defense-in-depth selain middleware
+  const token = req.cookies.get("panel_token")?.value;
+  if (!token || !(await verifyToken(token))) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   const body = await req.json();
   const { title, image_url } = body;
@@ -38,7 +47,11 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-
+  // Verifikasi token — defense-in-depth selain middleware
+  const token = req.cookies.get("panel_token")?.value;
+  if (!token || !(await verifyToken(token))) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   const id = req.nextUrl.searchParams.get("id");
   if (!id) {
