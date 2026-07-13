@@ -46,13 +46,13 @@ export default function Biaya({ data }: { data: BiayaData }) {
               {data.bulanan.map((item) => (
                 <li key={item.label} className="flex justify-between items-center py-2 border-b border-white/20">
                   <span className="text-base text-green-100">{item.label}</span>
-                  <span className="font-bold text-yellow-400">{item.amount}</span>
+                  <span className="font-bold text-yellow-300">{item.amount}</span>
                 </li>
               ))}
             </ul>
             <div className="bg-white/10 rounded-2xl p-4 flex justify-between items-center">
               <span className="font-bold">Total Per Bulan</span>
-              <span className="text-2xl font-extrabold text-yellow-400">{data.totalBulanan}</span>
+              <span className="text-2xl font-extrabold text-yellow-300">{data.totalBulanan}</span>
             </div>
           </div>
 

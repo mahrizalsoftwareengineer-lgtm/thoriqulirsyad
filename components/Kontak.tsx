@@ -145,7 +145,7 @@ export default function Kontak({ data }: { data: KontakData }) {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Email <span className="text-gray-400 font-normal">(opsional)</span></label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Email <span className="text-gray-500 font-normal">(opsional)</span></label>
                   <input 
                     type="email" 
                     placeholder="email@contoh.com"
@@ -155,7 +155,7 @@ export default function Kontak({ data }: { data: KontakData }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">No. Telepon <span className="text-gray-400 font-normal">(opsional)</span></label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">No. Telepon <span className="text-gray-500 font-normal">(opsional)</span></label>
                   <input 
                     type="tel" 
                     placeholder="08xx-xxxx-xxxx"
