@@ -23,13 +23,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/tentang`,
+      url: `${baseUrl}/tentang/profil-pesantren`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/pendidikan`,
+      url: `${baseUrl}/tentang/profil-pengasuh`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/pendidikan/program`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/pendidikan/kurikulum`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
