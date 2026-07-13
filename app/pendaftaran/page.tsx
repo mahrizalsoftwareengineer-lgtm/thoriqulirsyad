@@ -14,6 +14,8 @@ const persyaratan = [
   "Pas Foto 3x4 4 Lembar",
 ];
 
+export const dynamic = 'force-static';
+
 export default function Pendaftaran() {
   const { kontak, biaya } = defaultKonten;
 
