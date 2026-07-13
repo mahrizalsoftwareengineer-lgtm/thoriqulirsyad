@@ -1,7 +1,5 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { supabase } from "@/lib/supabase";
 
 const defaultItems = [
   { src: "/images/galeri 1 di dero.jpeg", alt: "Kegiatan Santri di Dero", caption: "Kegiatan Santri" },
@@ -12,33 +10,22 @@ const defaultItems = [
   { src: "/images/abah yai hakimin.jpg", alt: "Abah Yai Hakimin", caption: "Abah Yai Hakimin" },
 ];
 
-type GalleriItem = {
-  id: string;
-  title: string;
-  image_url: string;
-};
+export default async function Galeri() {
+  const { data, error } = await supabase
+    .from("gallery")
+    .select("id,title,image_url,created_at")
+    .order("created_at", { ascending: false })
+    .limit(6);
 
-export default function Galeri() {
-  const [galeriItems, setGaleriItems] = useState<GalleriItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  let itemsToRender = defaultItems.slice(0, 6);
 
-  useEffect(() => {
-    fetch("/api/galeri")
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setGaleriItems(data);
-        }
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
-
-  const itemsToRender = galeriItems.length > 0 ? galeriItems.slice(0, 6).map((item) => ({
-    src: item.image_url,
-    alt: item.title,
-    caption: item.title,
-  })) : defaultItems.slice(0, 6);
+  if (!error && data && data.length > 0) {
+    itemsToRender = data.map((item) => ({
+      src: item.image_url,
+      alt: item.title,
+      caption: item.title,
+    }));
+  }
 
   return (
     <section id="galeri" className="py-16 bg-green-50">
@@ -56,7 +43,7 @@ export default function Galeri() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {(loading ? defaultItems.slice(0, 6) : itemsToRender).map((item, idx) => (
+          {itemsToRender.map((item, idx) => (
             <div
               key={idx}
               className="relative group overflow-hidden rounded-2xl shadow-md aspect-square"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const siteUrl = "https://ppthoriqulirsyad.com";
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   verification: {
-    google: "p8O1ZReyxFX9XNl6nPFRVw8aA3aOZB1PH4GNXjwnm1k",
+    google: "H-NQ4ZqQUtCZxyVro3G5sBRwcg8o92-LokSji0-WrB8",
   },
 };
 
@@ -148,24 +149,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
         <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
-
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-GMYBE4KZYG"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-GMYBE4KZYG');
-          `}
-        </Script>
       </head>
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: orgSchema }} />
         {children}
         <Analytics />
+        <GoogleAnalytics gaId="G-GMYBE4KZYG" />
       </body>
     </html>
   );
