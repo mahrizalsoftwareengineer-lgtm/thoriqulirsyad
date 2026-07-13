@@ -181,7 +181,7 @@ export default function Kontak({ data }: { data: KontakData }) {
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed mt-4"
+                className="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed mt-4"
               >
                 {isSubmitting ? "Mengirim..." : (
                   <>

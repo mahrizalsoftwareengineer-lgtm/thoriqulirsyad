@@ -58,5 +58,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/media/galeri`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/media/video`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
   ];
 }

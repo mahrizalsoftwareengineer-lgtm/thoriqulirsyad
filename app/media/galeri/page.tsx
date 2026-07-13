@@ -1,32 +1,36 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import defaultKonten from "@/data/konten.json";
-import { supabase } from "@/lib/supabase";
+import { fetchGallery } from "@/lib/fetchGallery";
 
-type GalleryItem = {
-  id: string;
-  title: string;
-  image_url: string;
+export const metadata: Metadata = {
+  title: "Galeri Foto — Pondok Al Quran Wonosobo | Thoriqul Irsyad",
+  description:
+    "Galeri foto kegiatan santri Pondok Pesantren Thoriqul Irsyad — Pondok Al Quran Wonosobo. Dokumentasi momen berharga kehidupan di pesantren.",
+  keywords: [
+    "Galeri Pondok Pesantren Wonosobo",
+    "Foto Kegiatan Santri Wonosobo",
+    "Pondok Al Quran Wonosobo",
+  ],
+  alternates: {
+    canonical: "/media/galeri",
+  },
+  openGraph: {
+    title: "Galeri Foto — Pondok Al Quran Wonosobo | Thoriqul Irsyad",
+    description:
+      "Galeri foto kegiatan santri Pondok Pesantren Thoriqul Irsyad — dokumentasi momen berharga di Pondok Al Quran Wonosobo.",
+    url: "/media/galeri",
+    images: ["/images/logo.jpeg"],
+    type: "website",
+  },
 };
-
-async function getGalleryItems() {
-  const { data, error } = await supabase
-    .from("gallery")
-    .select("id,title,image_url,created_at")
-    .order("created_at", { ascending: false });
-
-  if (error || !Array.isArray(data)) {
-    return [] as GalleryItem[];
-  }
-
-  return data as GalleryItem[];
-}
 
 export default async function GaleriFoto() {
   const { kontak } = defaultKonten;
-  const items = await getGalleryItems();
+  const items = await fetchGallery();
 
   return (
     <>

@@ -669,7 +669,11 @@ export default function Dashboard() {
             <div className="space-y-6">
               <h2 className="font-extrabold text-gray-800 text-lg mb-4">YouTube Embed</h2>
               <div className="bg-green-50 rounded-3xl p-6 border border-green-100">
-                <label className="label">Embed Code YouTube</label>
+                <label className="label">Video ID atau URL YouTube</label>
+                <p className="text-xs text-gray-500 mb-2">
+                  Masukkan Video ID (contoh: <code className="bg-gray-100 px-1 rounded">dQw4w9WgXcQ</code>)
+                  atau URL YouTube lengkap. Embed code HTML tidak diperlukan.
+                </p>
                 <textarea
                   className="input"
                   rows={4}

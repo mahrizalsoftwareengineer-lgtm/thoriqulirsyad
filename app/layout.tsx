@@ -113,12 +113,30 @@ export default function RootLayout({
         {
           "@type": "ListItem",
           position: 2,
+          name: "Tentang",
+          item: "https://ppthoriqulirsyad.com/tentang/profil-pesantren",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Pendidikan",
+          item: "https://ppthoriqulirsyad.com/pendidikan/program",
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Media",
+          item: "https://ppthoriqulirsyad.com/media/galeri",
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
           name: "Pendaftaran",
           item: "https://ppthoriqulirsyad.com/pendaftaran",
         },
         {
           "@type": "ListItem",
-          position: 3,
+          position: 6,
           name: "Kontak",
           item: "https://ppthoriqulirsyad.com/kontak",
         },
@@ -145,10 +163,15 @@ export default function RootLayout({
   return (
     <html lang="id">
       <head>
-        {/* Preconnect to external origins used on first paint */}
+        {/* Preconnect ke origin eksternal yang dipakai di first paint */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
-        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
+        {/* Supabase preconnect — hanya di-render jika env var tersedia */}
+        {process.env.NEXT_PUBLIC_SUPABASE_URL && (
+          <>
+            <link rel="preconnect" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
+            <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
+          </>
+        )}
       </head>
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: orgSchema }} />

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { supabase } from "@/lib/supabase";
+import { fetchGallery } from "@/lib/fetchGallery";
 
 const defaultItems = [
   { src: "/images/galeri 1 di dero.jpeg", alt: "Kegiatan Santri di Dero", caption: "Kegiatan Santri" },
@@ -11,21 +11,16 @@ const defaultItems = [
 ];
 
 export default async function Galeri() {
-  const { data, error } = await supabase
-    .from("gallery")
-    .select("id,title,image_url,created_at")
-    .order("created_at", { ascending: false })
-    .limit(6);
+  const data = await fetchGallery(6);
 
-  let itemsToRender = defaultItems.slice(0, 6);
-
-  if (!error && data && data.length > 0) {
-    itemsToRender = data.map((item) => ({
-      src: item.image_url,
-      alt: item.title,
-      caption: item.title,
-    }));
-  }
+  const itemsToRender =
+    data.length > 0
+      ? data.map((item) => ({
+          src: item.image_url,
+          alt: item.title,
+          caption: item.title,
+        }))
+      : defaultItems.slice(0, 6);
 
   return (
     <section id="galeri" className="py-16 bg-green-50">
