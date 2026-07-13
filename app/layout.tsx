@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const siteUrl = "https://ppthoriqulirsyad.com";
@@ -154,7 +154,18 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: orgSchema }} />
         {children}
         <Analytics />
-        <GoogleAnalytics gaId="G-GMYBE4KZYG" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GMYBE4KZYG"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GMYBE4KZYG');
+          `}
+        </Script>
       </body>
     </html>
   );
